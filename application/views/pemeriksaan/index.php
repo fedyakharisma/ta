@@ -66,12 +66,12 @@
                                                     <?php echo substr($date_now, 0, 4) - substr($data->tgl_lahir, 0, 4); ?> Tahun
                                                 </td>
                                                 <td width='10%' class="text-center">
-                                                    <a href="" class="" data-toggle="modal" data-target="#modal_periksa<?php echo $data->no_rm; ?>">
+                                                    <a href="#" class="" data-toggle="modal" data-target="#modal_periksa<?php echo $data->no_rm; ?>">
                                                         <i class="nav-icon fas btn fa-eye"></i>
                                                     </a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="" class="" data-toggle="modal" data-target="#modal_periksa<?php echo $data->poli_kode; ?>">
+                                                    <a href="#" class="" data-toggle="modal" data-target="#modal_ubah<?php echo $data->id_kunjungan; ?>">
                                                         <i class="nav-icon fas btn fa-edit"></i>
                                                     </a>
                                                     <a href="<?php echo base_url('poliklinik/hapusPoliklinik/' . $data->poli_kode) ?>" onclick="return confirm('Hapus <?php echo $data->poli ?>?')" class="">
@@ -97,8 +97,17 @@
 <!-- start modal upload -->
 <?php
 foreach ($pemeriksaan as $data) {
+    $id_kunjungan = $data->id_kunjungan;
     $no_rm = $data->no_rm;
+    $nrp = $data->nik_pangkat_nrp;
     $nama_lengkap = $data->nama_lengkap;
+    $jenis_kelamin = $data->jenis_kelamin;
+    $alamat = $data->alamat;
+    $tempat = $data->tempat;
+    $tgl_lahir = $data->tgl_lahir;
+    $orangtua_suami = $data->orangtua_suami;
+    $waktu = $data->waktu;
+    $status = $data->status;
     $keluhan = $data->keluhan;
     $poli = $data->poli;
 ?>
@@ -121,6 +130,51 @@ foreach ($pemeriksaan as $data) {
                                     <label class="control-label col-xs-3">Keluhan</label>
                                     <div class="col-xs-8">
                                         <textarea readonly name="" class="form-control" rows="5"><?php echo $keluhan; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success col-12">Lembar Asessmen</button>
+                            </div>
+                            </form>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_ubah<?php echo $id_kunjungan; ?>" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><?php echo '(' . $no_rm . ') ' . $nama_lengkap; ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                </div>
+                <?php if ($poli == 'Poli Umum') { ?>
+                    <form class="form-horizontal" action="<?php echo base_url('Pemeriksaan/asessmenUmum/' . $no_rm); ?>" method="post" enctype="multipart/form-data" role="form">
+                    <?php } elseif ($poli == 'Poli KIA/KB') { ?>
+                        <form class="form-horizontal" action="<?php echo base_url('Pemeriksaan/asessmenKiaKb/' . $no_rm); ?>" method="post" enctype="multipart/form-data" role="form">
+                        <?php } elseif ($poli == 'Poli Gigi dan Mulut') { ?>
+                            <form class="form-horizontal" action="<?php echo base_url('Pemeriksaan/asessmenGigiMulut/' . $no_rm); ?>" method="post" enctype="multipart/form-data" role="form">
+                            <?php } ?>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">NIP/NRP/PANGKAT</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" value="<?php echo $nrp; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">NIP/NRP/PANGKAT</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" value="<?php echo $nrp; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">NAMA LENGKAP</label>
+                                    <div class="col-xs-8">
+                                        <input type="text" class="form-control" value="<?php echo $nama_lengkap; ?>">
                                     </div>
                                 </div>
                             </div>

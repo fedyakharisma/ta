@@ -29,15 +29,17 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr style="font-size: 90%;">
                                     <th style="width: 1%;">No</th>
-                                    <th>No. RM</th>
-                                    <th>NIP/PANGKAT/NRP</th>
-                                    <th>NAMA LENGKAP</th>
-                                    <!-- <th>ALAMAT</th> -->
-                                    <th>TEMPAT, TGL LAHIR</th>
+                                    <th>TANGGAL DAFTAR</th>
+                                    <th>NO.RM</th>
+                                    <th>NO.BPJS</th>
+                                    <th>NAMA</th>
+                                    <th>TANGGAL LAHIR</th>
+                                    <th>NIP/KTP/NRP</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -49,14 +51,16 @@
                                 ?>
                                         <tr style="font-size: 90%;">
                                             <td><?php echo $no++; ?></td>
+                                            <td><?php echo $data->tanggal_daftar; ?></td>
                                             <td><?php echo $data->no_rm; ?></td>
-                                            <td><?php echo $data->nik_pangkat_nrp; ?></td>
-                                            <td><?php echo $data->nama_lengkap; ?></td>
-                                            <!-- <td><?php echo $data->alamat; ?></td> -->
-                                            <td><?php echo $data->tempat; ?>, <?php echo $data->tgl_lahir; ?></td>
+                                            <td><?php echo $data->no_bpjs; ?></td>
+                                            <td><?php echo $data->nama; ?></td>
+                                            <td><?php echo $data->tempat; ?>, <?php echo $data->tanggal_lahir; ?></td>
+                                            <td><?php echo $data->nip_ktp_nrp; ?></td>
                                             <td>
-                                                <a href="">Ubah</a>
-                                                <a href="">Hapus</a>
+                                                <div class="row"><a href="">Detail</a></div>
+                                                <div class="row"><a href="">Ubah</a></div>
+                                                <div class="row"><a href="">Hapus</a></div>
                                             </td>
                                         </tr>
                                 <?php }
@@ -64,18 +68,114 @@
                             </tbody>
                             <tfoot>
                                 <tr style="font-size: 90%;">
-                                    <th>No</th>
-                                    <th>No. RM</th>
-                                    <th>NIP/PANGKAT/NRP</th>
-                                    <th>NAMA LENGKAP</th>
-                                    <!-- <th>ALAMAT</th> -->
-                                    <th>TEMPAT, TGL LAHIR</th>
+                                    <th>NO</th>
+                                    <th>TANGGAL DAFTAR</th>
+                                    <th>NO.RM</th>
+                                    <th>NO.BPJS</th>
+                                    <th>NAMA</th>
+                                    <th>TANGGAL LAHIR</th>
+                                    <th>NIP/KTP/NRP</th>
                                     <th>AKSI</th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
+
+                    <!-- ============ MODAL ADD BARANG =============== -->
+                    <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="myModalLabel">Add New Pasien</h3>
+                        </div>
+                        <form class="form-horizontal" method="post" action="<?php echo base_url('Pasien/simpanPasien') ?>">
+                            <div class="modal-body">
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >Nama Pasien</label>
+                                            <div class="col-xs-8">
+                                                <input name="namapasien" class="form-control" type="text" placeholder="Nama Pasien..." required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >No BPJS</label>
+                                            <div class="col-xs-8">
+                                                <input name="nobpjs" class="form-control" type="text" placeholder="No BPJS..." required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >Tempat, Tanggal Lahir</label>
+                                    <div class="col-xs-8">
+                                        <input name="tempat" class="form-control" type="text" placeholder="Tempat Lahir..." required>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input name="tanggallahir" class="form-control" type="date" placeholder="Tanggal Lahir..." required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >Tanggal Lahir</label>
+                                    <div class="col-xs-8">
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >NIK/KTP/NRP</label>
+                                    <div class="col-xs-8">
+                                        <input name="nipktpnrp" class="form-control" type="text" placeholder="NIK/KTP/NRP..." required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >Keterangan</label>
+                                    <div class="col-xs-8">
+                                        <input name="keterangan" class="form-control" type="text" placeholder="Keterangan..." required>
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group">
+                                    <label class="control-label col-xs-3" >Satuan</label>
+                                    <div class="col-xs-8">
+                                         <select name="satuan" class="form-control" required>
+                                            <option value="">-PILIH-</option>
+                                            <option value="Unit">Unit</option>
+                                            <option value="Kotak">Kotak</option>
+                                            <option value="Botol">Botol</option>
+                                            <option value="Sachet">Sachet</option>
+                                            <option value="Pcs">Pcs</option>
+                                            <option value="Dus">Dus</option>
+                                         </select>
+                                    </div>
+                                </div>
+             
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >Harga</label>
+                                    <div class="col-xs-8">
+                                        <input name="harga" class="form-control" type="text" placeholder="Harga..." required>
+                                    </div>
+                                </div>
+                                 -->   
+                            </div>
+             
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                                <button class="btn btn-info">Simpan</button>
+                            </div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>
+                    <!--END MODAL ADD BARANG-->
+
                 </div>
                 <!-- /.card -->
             </div>

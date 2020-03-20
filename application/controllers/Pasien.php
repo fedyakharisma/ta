@@ -22,6 +22,15 @@ class Pasien extends CI_Controller{
         $this->load->view('template/foot');
     }
 
+    function simpan_barang(){
+        $kode_barang=$this->input->post('kode_barang');
+        $nama_barang=$this->input->post('nama_barang');
+        $satuan=$this->input->post('satuan');
+        $harga=$this->input->post('harga');
+        $this->m_barang->simpan_barang($kode_barang,$nama_barang,$satuan,$harga);
+        redirect('barang');
+    }
+    
     public function form()
     {
         $this->load->view('template/head');

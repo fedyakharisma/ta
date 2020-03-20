@@ -8,8 +8,8 @@ class mPasien extends CI_Model
     public function view()
     {
         $this->db->select("*");
-        $this->db->order_by("nama_lengkap", "ASC");
-        return $this->db->get("ktb")->result();
+        $this->db->order_by("nama", "ASC");
+        return $this->db->get("pasien")->result();
     }
 
 	public function getByid($where, $table)

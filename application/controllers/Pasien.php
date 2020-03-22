@@ -42,6 +42,12 @@ class Pasien extends CI_Controller{
         $this->mPasien->input_data($data, 'pasien');
         redirect('Pasien/');
     }
+
+    public function hapusPasien($no_rm)
+    {
+        $this->mPasien->delete($no_rm);
+        redirect('Pasien/');
+    }
     
     public function form()
     {

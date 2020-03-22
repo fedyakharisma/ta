@@ -60,7 +60,7 @@
                                             <td>
                                                 <div class="row"><a href="">Detail</a></div>
                                                 <div class="row"><a href="">Ubah</a></div>
-                                                <div class="row"><a href="">Hapus</a></div>
+                                                <div class="row"><a href="<?php echo base_url('Pasien/hapusPasien/' . $data->no_rm) ?>" onclick="return confirm('Hapus <?php echo $data->nama ?>?')" >Hapus</a></div>
                                             </td>
                                         </tr>
                                 <?php }

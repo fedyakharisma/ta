@@ -30,7 +30,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a>
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped table-responsive">
                             <thead>
                                 <tr style="font-size: 90%;">
                                     <th style="width: 1%;">No</th>
@@ -89,7 +89,7 @@
                         <div class="modal-header">
                             <h3 class="modal-title" id="myModalLabel">Add New Pasien</h3>
                         </div>
-                        <form class="form-horizontal" method="post" action="<?php echo base_url('Pasien/simpanPasien') ?>">
+                        <form class="form-horizontal" method="post" action="<?php echo base_url('Pasien/tambahPasien') ?>">
                             <div class="modal-body">
                                 
                                 <div class="row">
@@ -97,7 +97,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-xs-3" >Nama Pasien</label>
                                             <div class="col-xs-8">
-                                                <input name="namapasien" class="form-control" type="text" placeholder="Nama Pasien..." required>
+                                                <input name="namapasien" class="form-control" type="text" placeholder="Cth. Fedya Kharisma Putra" required>
                                             </div>
                                         </div>
                                     </div>
@@ -105,33 +105,60 @@
                                         <div class="form-group">
                                             <label class="control-label col-xs-3" >No BPJS</label>
                                             <div class="col-xs-8">
-                                                <input name="nobpjs" class="form-control" type="text" placeholder="No BPJS..." required>
+                                                <input name="nobpjs" class="form-control" type="text" placeholder="Cth. 000xxxxxxxxxx" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >Tempat Lahir</label>
+                                            <div class="col-xs-8">
+                                                <input name="tempat" class="form-control" type="text" placeholder="Cth.Probolinggo" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >Tanggal Lahir</label>    
+                                            <div class="col-xs-4">
+                                                <input name="tanggallahir" class="form-control" type="date" placeholder="Tanggal Lahir..." required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >Jenis Kelamin</label>
+                                            <div class="col-xs-8">
+                                                 <select name="jk" class="form-control" required>
+                                                    <option value="">-PILIH JENIS KELAMIN-</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
+                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-3" >NIK/KTP/NRP</label>
+                                            <div class="col-xs-8">
+                                                <input name="nipktpnrp" class="form-control" type="text" placeholder="Masukkan NIK/KTP/NRP..." required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-xs-3" >Tempat, Tanggal Lahir</label>
+                                    <label class="control-label col-xs-3" >Alamat</label>
                                     <div class="col-xs-8">
-                                        <input name="tempat" class="form-control" type="text" placeholder="Tempat Lahir..." required>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <input name="tanggallahir" class="form-control" type="date" placeholder="Tanggal Lahir..." required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-xs-3" >Tanggal Lahir</label>
-                                    <div class="col-xs-8">
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="control-label col-xs-3" >NIK/KTP/NRP</label>
-                                    <div class="col-xs-8">
-                                        <input name="nipktpnrp" class="form-control" type="text" placeholder="NIK/KTP/NRP..." required>
+                                        <textarea name="alamat" class="form-control" placeholder="Cth. Jl.Sudirxxxxx...." required></textarea>
                                     </div>
                                 </div>
 

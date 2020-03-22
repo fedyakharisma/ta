@@ -22,13 +22,25 @@ class Pasien extends CI_Controller{
         $this->load->view('template/foot');
     }
 
-    function simpan_barang(){
-        $kode_barang=$this->input->post('kode_barang');
-        $nama_barang=$this->input->post('nama_barang');
-        $satuan=$this->input->post('satuan');
-        $harga=$this->input->post('harga');
-        $this->m_barang->simpan_barang($kode_barang,$nama_barang,$satuan,$harga);
-        redirect('barang');
+    public function tambahPasien()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal= date("Y-m-d H:i:s");
+            
+        $data = array(
+            'tanggal_daftar'=> $tanggal,
+            'nama' => $this->input->post('namapasien'),
+            'no_bpjs' => $this->input->post('nobpjs'),
+            'tempat' => $this->input->post('tempat'),
+            'tanggal_lahir' => $this->input->post('tanggallahir'),
+            'jenis_kelamin' => $this->input->post('jk'),
+            'alamat' => $this->input->post('alamat'),
+            'nip_ktp_nrp' => $this->input->post('nipktpnrp'),
+            'keterangan' => $this->input->post('keterangan')
+            
+        );
+        $this->mPasien->input_data($data, 'pasien');
+        redirect('Pasien/');
     }
     
     public function form()

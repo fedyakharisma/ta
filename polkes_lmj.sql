@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Feb 2020 pada 07.26
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Mar 22, 2020 at 09:47 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,80 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `icd_10`
+-- Table structure for table `asessmen_umum`
+--
+
+CREATE TABLE `asessmen_umum` (
+  `id_pemeriksaan` int(6) NOT NULL,
+  `no_rm` int(6) NOT NULL,
+  `nama_lengkap` varchar(30) NOT NULL,
+  `kunjungan` varchar(4) NOT NULL,
+  `alamat` text NOT NULL,
+  `orangtua_suami` varchar(30) NOT NULL,
+  `tgl_jam_pengkajian` datetime NOT NULL,
+  `tgllahir` date NOT NULL,
+  `usia` varchar(2) NOT NULL,
+  `keterbatasan_komunikasi` varchar(12) NOT NULL,
+  `alergi` varchar(18) DEFAULT NULL,
+  `alergi_obat` varchar(40) NOT NULL,
+  `reaksi_alergi_obat` varchar(40) NOT NULL,
+  `alergi_makanan` varchar(40) NOT NULL,
+  `reaksi_alergi_makanan` varchar(40) NOT NULL,
+  `alergi_lainnya` varchar(40) NOT NULL,
+  `reaksi_alergi_lainnya` varchar(40) NOT NULL,
+  `sebutkan_eso` varchar(40) NOT NULL,
+  `eso` varchar(40) NOT NULL,
+  `keluhan_utama` varchar(40) NOT NULL,
+  `riwayat_saat_ini` varchar(40) NOT NULL,
+  `riwayat_penyakit_dahulu` varchar(40) NOT NULL,
+  `operasi_sebutkan` varchar(40) NOT NULL,
+  `kapan_operasi` varchar(40) NOT NULL,
+  `tindakan_lain_sebutkan` varchar(40) NOT NULL,
+  `kapan_tindakan_lain` varchar(40) NOT NULL,
+  `riwayat_penyakit_keluarga` varchar(40) NOT NULL,
+  `riwayat_obat_yang_diminum` varchar(40) NOT NULL,
+  `hubungan_pasien_dg_keluarga` varchar(11) NOT NULL,
+  `status_psikologis` varchar(7) NOT NULL,
+  `pekerjaan` varchar(40) NOT NULL,
+  `td` varchar(4) NOT NULL,
+  `suhu` varchar(3) NOT NULL,
+  `nadi` varchar(3) NOT NULL,
+  `rr` varchar(3) NOT NULL,
+  `alat_bantu` varchar(30) NOT NULL,
+  `protesa` varchar(30) NOT NULL,
+  `cacat_tubuh` varchar(30) NOT NULL,
+  `adl` varchar(7) NOT NULL,
+  `keadaan_umum` varchar(6) NOT NULL,
+  `kesadaran` varchar(50) NOT NULL,
+  `bb` varchar(3) NOT NULL,
+  `tb` varchar(3) NOT NULL,
+  `gol_darah` varchar(2) NOT NULL,
+  `keadaan_gizi` varchar(6) NOT NULL,
+  `skor_nyeri` varchar(40) NOT NULL,
+  `skala_nyeri` varchar(20) NOT NULL,
+  `lokasi_nyeri` varchar(20) NOT NULL,
+  `durasi_nyeri` varchar(20) NOT NULL,
+  `frekuensi_nyeri` varchar(20) NOT NULL,
+  `nyeri_hilang_bila` varchar(50) NOT NULL,
+  `pasien_tidak_seimbang` varchar(5) NOT NULL,
+  `pasien_memegang_benda_lain` varchar(5) NOT NULL,
+  `hasil` varchar(50) NOT NULL,
+  `lapor_dokter` varchar(50) NOT NULL,
+  `id_pegawai` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `asessmen_umum`
+--
+
+INSERT INTO `asessmen_umum` (`id_pemeriksaan`, `no_rm`, `nama_lengkap`, `kunjungan`, `alamat`, `orangtua_suami`, `tgl_jam_pengkajian`, `tgllahir`, `usia`, `keterbatasan_komunikasi`, `alergi`, `alergi_obat`, `reaksi_alergi_obat`, `alergi_makanan`, `reaksi_alergi_makanan`, `alergi_lainnya`, `reaksi_alergi_lainnya`, `sebutkan_eso`, `eso`, `keluhan_utama`, `riwayat_saat_ini`, `riwayat_penyakit_dahulu`, `operasi_sebutkan`, `kapan_operasi`, `tindakan_lain_sebutkan`, `kapan_tindakan_lain`, `riwayat_penyakit_keluarga`, `riwayat_obat_yang_diminum`, `hubungan_pasien_dg_keluarga`, `status_psikologis`, `pekerjaan`, `td`, `suhu`, `nadi`, `rr`, `alat_bantu`, `protesa`, `cacat_tubuh`, `adl`, `keadaan_umum`, `kesadaran`, `bb`, `tb`, `gol_darah`, `keadaan_gizi`, `skor_nyeri`, `skala_nyeri`, `lokasi_nyeri`, `durasi_nyeri`, `frekuensi_nyeri`, `nyeri_hilang_bila`, `pasien_tidak_seimbang`, `pasien_memegang_benda_lain`, `hasil`, `lapor_dokter`, `id_pegawai`) VALUES
+(38, 123456, 'pasien rio andika oktavian', 'Baru', 'perum surya asri kedungjajang, lmj, jatim', 'bapak rio', '2020-03-11 10:42:43', '1998-10-21', '22', 'Tidak ada', 'Tidak ada alergi', '', '', '', '', '', '', 'nama obat sebutkan', 'eso nama obat', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(40, 654321, 'pasien tamtama rio', 'Baru', 'jember jatim indonesia', 'bapak rio dua', '2020-03-11 11:34:28', '1996-02-03', '24', 'Bahasa', 'Tidak ada alergi', '', '', '', '', '', '', 'nama obat sebutkan', 'nama obat sebtkn', 'keluhan utama', 'riwayat saat ini', 'riwayat penyakit dahulu', 'operasi sebutkan', '', '', '', 'riwayat penyakit keluarga', 'riwayat obat yang diminum', 'baik', 'tenang', 'pekerjaan', '1', '8', '1', '1', 'alat bantu', 'protesa', 'cacat tubuh', 'mandiri', 'lemah', 'kesaran', '1', '165', 'B', 'buruk', 'Tidak ada nyeri', 'skala nyeri', 'lokasi', 'durasi', 'frekuensi', 'Minum obat', 'y', 'n', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `icd_10`
 --
 
 CREATE TABLE `icd_10` (
@@ -35,7 +108,7 @@ CREATE TABLE `icd_10` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `icd_10`
+-- Dumping data for table `icd_10`
 --
 
 INSERT INTO `icd_10` (`id_icd`, `diagnosa`, `kode`) VALUES
@@ -143,7 +216,7 @@ INSERT INTO `icd_10` (`id_icd`, `diagnosa`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_pelayanan`
+-- Table structure for table `jenis_pelayanan`
 --
 
 CREATE TABLE `jenis_pelayanan` (
@@ -154,46 +227,85 @@ CREATE TABLE `jenis_pelayanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ktb`
+-- Table structure for table `ktb`
 --
 
 CREATE TABLE `ktb` (
-  `id_ktb` int(6) NOT NULL,
   `no_rm` int(6) NOT NULL,
   `nik_pangkat_nrp` varchar(15) NOT NULL,
+  `jenis_kelamin` varchar(1) NOT NULL,
   `nama_lengkap` varchar(30) NOT NULL,
   `alamat` text NOT NULL,
   `tempat` varchar(30) NOT NULL,
-  `tgl_lahir` date NOT NULL
+  `tgl_lahir` date NOT NULL,
+  `orangtua_suami` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ktb`
+-- Dumping data for table `ktb`
 --
 
-INSERT INTO `ktb` (`id_ktb`, `no_rm`, `nik_pangkat_nrp`, `nama_lengkap`, `alamat`, `tempat`, `tgl_lahir`) VALUES
-(1, 1, 'pangkat1', 'pasien rio andika oktavian', 'perum surya asri kedungjajang, lmj, jatim', 'lumajang', '1998-10-21');
+INSERT INTO `ktb` (`no_rm`, `nik_pangkat_nrp`, `jenis_kelamin`, `nama_lengkap`, `alamat`, `tempat`, `tgl_lahir`, `orangtua_suami`) VALUES
+(123456, 'pangkat1', 'L', 'pasien rio andika oktavian', 'perum surya asri kedungjajang, lmj, jatim', 'lumajang', '1998-10-21', 'bapak rio'),
+(654321, 'tamtama', 'P', 'pasien tamtama rio', 'jember jatim indonesia', 'sukabumi', '1996-02-03', 'bapak rio dua'),
+(898989, 'pangkat', 'L', 'pak dar', 'lmj', 'lmj', '2020-03-26', 'oke');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pasien`
+-- Table structure for table `kunjungan`
+--
+
+CREATE TABLE `kunjungan` (
+  `id_kunjungan` int(11) NOT NULL,
+  `no_rm` int(6) NOT NULL,
+  `poli_kode` varchar(6) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `status` varchar(17) NOT NULL,
+  `keluhan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kunjungan`
+--
+
+INSERT INTO `kunjungan` (`id_kunjungan`, `no_rm`, `poli_kode`, `waktu`, `status`, `keluhan`) VALUES
+(7, 654321, 'PL004', '2020-03-12 03:23:10', 'Selesai diperiksa', 'gigi dan mulut'),
+(8, 123456, 'PL005', '2020-03-14 04:30:21', 'Selesai diperiksa', 'kia kb'),
+(10, 898989, 'PL003', '2020-03-20 02:46:46', 'Selesai diperiksa', 'pusing'),
+(11, 123456, 'PL003', '2020-03-22 08:23:10', 'Belum diperiksa', 'sa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pasien`
 --
 
 CREATE TABLE `pasien` (
-  `id_pasien` int(11) NOT NULL,
-  `id_ktb` int(6) NOT NULL,
-  `nama_lengkap` varchar(30) NOT NULL,
-  `nik_pangkat_nrp` varchar(15) NOT NULL,
+  `tanggal_daftar` datetime NOT NULL,
+  `no_rm` int(11) NOT NULL,
+  `no_bpjs` varchar(15) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `jenis_kelamin` varchar(1) NOT NULL,
   `alamat` text NOT NULL,
   `tempat` varchar(30) NOT NULL,
-  `tgl_lahir` date NOT NULL
+  `nip_ktp_nrp` varchar(50) NOT NULL,
+  `keterangan` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pasien`
+--
+
+INSERT INTO `pasien` (`tanggal_daftar`, `no_rm`, `no_bpjs`, `nama`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `tempat`, `nip_ktp_nrp`, `keterangan`) VALUES
+('2020-03-22 15:42:29', 12361, '17371283921', 'Fedya Kharisma Putra', '1999-03-04', 'L', 'Jalan Lumajang Gang Mawar No 9A', 'Probolinggo', '87384239', 'sakit'),
+('2020-03-22 15:44:10', 12362, '84092384012394', 'Bilqis Ayunda Putri', '2008-02-06', 'P', 'Jalan Lumajang Gg Mawar No 9A', 'Probolinggo', '93274987132', 'OL');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `pegawai`
 --
 
 CREATE TABLE `pegawai` (
@@ -206,7 +318,7 @@ CREATE TABLE `pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pegawai`
+-- Dumping data for table `pegawai`
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nama_lengkap`, `umur`, `jenis_kelamin`, `id_role`, `id_user`) VALUES
@@ -215,71 +327,47 @@ INSERT INTO `pegawai` (`id_pegawai`, `nama_lengkap`, `umur`, `jenis_kelamin`, `i
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemeriksaan`
+-- Table structure for table `pemeriksaan`
 --
 
 CREATE TABLE `pemeriksaan` (
-  `id_pemeriksaan` int(6) NOT NULL,
+  `id_pemeriksaan` int(11) NOT NULL,
   `no_rm` int(6) NOT NULL,
-  `nama_lengkap` varchar(30) NOT NULL,
-  `kunjungan` varchar(4) NOT NULL,
-  `alamat` text NOT NULL,
-  `orangtua_suami` varchar(30) NOT NULL,
-  `tgl_jam_pengkajian` date NOT NULL,
-  `tgllahir` date NOT NULL,
-  `usia` text NOT NULL,
-  `keterbatasan_komunikasi` varchar(12) NOT NULL,
-  `alergi` varchar(10) NOT NULL,
-  `alergi_obat` varchar(40) NOT NULL,
-  `reaksi_alergi_obat` varchar(40) NOT NULL,
-  `alergi_makanan` varchar(40) NOT NULL,
-  `reaksi_alergi_makanan` varchar(40) NOT NULL,
-  `alergi_lainnya` varchar(40) NOT NULL,
-  `reaksi_alergi_lainnya` varchar(40) NOT NULL,
-  `sebutkan_eso` varchar(40) NOT NULL,
-  `eso` varchar(40) NOT NULL,
-  `keluhan_utama` varchar(40) NOT NULL,
-  `riwayat_saat_ini` varchar(40) NOT NULL,
-  `riwayat_penyakit_dahulu` varchar(40) NOT NULL,
-  `operasi_sebutkan` varchar(40) NOT NULL,
-  `kapan_operasi` varchar(40) NOT NULL,
-  `tindakan_lain_sebutkan` varchar(40) NOT NULL,
-  `kapan_tindakan_lain` varchar(40) NOT NULL,
-  `riwayat_penyakit_keluarga` varchar(40) NOT NULL,
-  `riwayat_obat_yang_diminum` varchar(40) NOT NULL,
-  `hubungan_pasien_dg_keluarga` varchar(11) NOT NULL,
-  `status_psikologis` varchar(7) NOT NULL,
-  `pekerjaan` varchar(40) NOT NULL,
-  `td` varchar(4) NOT NULL,
-  `suhu` varchar(3) NOT NULL,
-  `nadi` varchar(3) NOT NULL,
-  `rr` varchar(3) NOT NULL,
-  `alat_bantu` varchar(30) NOT NULL,
-  `protesa` varchar(30) NOT NULL,
-  `cacat_tubuh` varchar(30) NOT NULL,
-  `adl` varchar(7) NOT NULL,
-  `keadaan_umum` varchar(6) NOT NULL,
-  `bb` varchar(3) NOT NULL,
-  `tb` varchar(3) NOT NULL,
-  `gol_darah` varchar(2) NOT NULL,
-  `keadaan_gizi` varchar(6) NOT NULL,
-  `skor_nyeri` varchar(40) NOT NULL,
-  `skala_nyeri` varchar(20) NOT NULL,
-  `lokasi_nyeri` varchar(20) NOT NULL,
-  `durasi_nyeri` varchar(20) NOT NULL,
-  `frekuensi_nyeri` varchar(20) NOT NULL,
-  `nyeri_hilang_bila` varchar(50) NOT NULL,
-  `pasien_tidak_seimbang` enum('y=ya','n=tidak') NOT NULL,
-  `pasien_memegang_benda_lain` enum('y=ya','n=tidak') NOT NULL,
-  `hasil` varchar(50) NOT NULL,
-  `lapor_dokter` varchar(50) NOT NULL,
-  `id_pegawai` int(6) NOT NULL
+  `selesai_ditangani` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pemeriksaan`
+--
+
+INSERT INTO `pemeriksaan` (`id_pemeriksaan`, `no_rm`, `selesai_ditangani`) VALUES
+(1, 1, '0'),
+(2, 2, '1');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role`
+-- Table structure for table `poli`
+--
+
+CREATE TABLE `poli` (
+  `poli_kode` varchar(6) NOT NULL,
+  `poli` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `poli`
+--
+
+INSERT INTO `poli` (`poli_kode`, `poli`) VALUES
+('PL003', 'Poli Umum'),
+('PL004', 'Poli Gigi dan Mulut'),
+('PL005', 'Poli KIA/KB');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -288,7 +376,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id_role`, `role`) VALUES
@@ -298,7 +386,7 @@ INSERT INTO `role` (`id_role`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `soap`
+-- Table structure for table `soap`
 --
 
 CREATE TABLE `soap` (
@@ -317,7 +405,7 @@ CREATE TABLE `soap` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tarif_pelayanan`
+-- Table structure for table `tarif_pelayanan`
 --
 
 CREATE TABLE `tarif_pelayanan` (
@@ -331,7 +419,7 @@ CREATE TABLE `tarif_pelayanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -341,7 +429,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
@@ -350,8 +438,31 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `v_pegawai`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `v_kunjungan`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_kunjungan` (
+`id_kunjungan` int(11)
+,`poli_kode` varchar(6)
+,`poli` varchar(30)
+,`no_rm` int(6)
+,`nik_pangkat_nrp` varchar(15)
+,`nama_lengkap` varchar(30)
+,`jenis_kelamin` varchar(1)
+,`alamat` text
+,`tempat` varchar(30)
+,`tgl_lahir` date
+,`orangtua_suami` varchar(30)
+,`waktu` datetime
+,`keluhan` text
+,`status` varchar(17)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_pegawai`
+-- (See below for the actual view)
 --
 CREATE TABLE `v_pegawai` (
 `id_pegawai` int(6)
@@ -366,42 +477,142 @@ CREATE TABLE `v_pegawai` (
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `v_pegawai`
+-- Stand-in structure for view `v_pemeriksaan`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_pemeriksaan` (
+`nik_pangkat_nrp` varchar(15)
+,`tempat` varchar(30)
+,`tgl_lahir` date
+,`id_pemeriksaan` int(6)
+,`no_rm` int(6)
+,`nama_lengkap` varchar(30)
+,`kunjungan` varchar(4)
+,`alamat` text
+,`orangtua_suami` varchar(30)
+,`tgl_jam_pengkajian` datetime
+,`tgllahir` date
+,`usia` varchar(2)
+,`keterbatasan_komunikasi` varchar(12)
+,`alergi` varchar(18)
+,`alergi_obat` varchar(40)
+,`reaksi_alergi_obat` varchar(40)
+,`alergi_makanan` varchar(40)
+,`reaksi_alergi_makanan` varchar(40)
+,`alergi_lainnya` varchar(40)
+,`reaksi_alergi_lainnya` varchar(40)
+,`sebutkan_eso` varchar(40)
+,`eso` varchar(40)
+,`keluhan_utama` varchar(40)
+,`riwayat_saat_ini` varchar(40)
+,`riwayat_penyakit_dahulu` varchar(40)
+,`operasi_sebutkan` varchar(40)
+,`kapan_operasi` varchar(40)
+,`tindakan_lain_sebutkan` varchar(40)
+,`kapan_tindakan_lain` varchar(40)
+,`riwayat_penyakit_keluarga` varchar(40)
+,`riwayat_obat_yang_diminum` varchar(40)
+,`hubungan_pasien_dg_keluarga` varchar(11)
+,`status_psikologis` varchar(7)
+,`pekerjaan` varchar(40)
+,`td` varchar(4)
+,`suhu` varchar(3)
+,`nadi` varchar(3)
+,`rr` varchar(3)
+,`alat_bantu` varchar(30)
+,`protesa` varchar(30)
+,`cacat_tubuh` varchar(30)
+,`adl` varchar(7)
+,`keadaan_umum` varchar(6)
+,`kesadaran` varchar(50)
+,`bb` varchar(3)
+,`tb` varchar(3)
+,`gol_darah` varchar(2)
+,`keadaan_gizi` varchar(6)
+,`skor_nyeri` varchar(40)
+,`skala_nyeri` varchar(20)
+,`lokasi_nyeri` varchar(20)
+,`durasi_nyeri` varchar(20)
+,`frekuensi_nyeri` varchar(20)
+,`nyeri_hilang_bila` varchar(50)
+,`pasien_tidak_seimbang` varchar(5)
+,`pasien_memegang_benda_lain` varchar(5)
+,`hasil` varchar(50)
+,`lapor_dokter` varchar(50)
+,`id_pegawai` int(6)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_kunjungan`
+--
+DROP TABLE IF EXISTS `v_kunjungan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kunjungan`  AS  select `k`.`id_kunjungan` AS `id_kunjungan`,`p`.`poli_kode` AS `poli_kode`,`p`.`poli` AS `poli`,`t`.`no_rm` AS `no_rm`,`t`.`nik_pangkat_nrp` AS `nik_pangkat_nrp`,`t`.`nama_lengkap` AS `nama_lengkap`,`t`.`jenis_kelamin` AS `jenis_kelamin`,`t`.`alamat` AS `alamat`,`t`.`tempat` AS `tempat`,`t`.`tgl_lahir` AS `tgl_lahir`,`t`.`orangtua_suami` AS `orangtua_suami`,`k`.`waktu` AS `waktu`,`k`.`keluhan` AS `keluhan`,`k`.`status` AS `status` from ((`kunjungan` `k` join `poli` `p` on((`k`.`poli_kode` = `p`.`poli_kode`))) join `ktb` `t` on((`k`.`no_rm` = `t`.`no_rm`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_pegawai`
 --
 DROP TABLE IF EXISTS `v_pegawai`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pegawai`  AS  select `p`.`id_pegawai` AS `id_pegawai`,`p`.`nama_lengkap` AS `nama_lengkap`,`p`.`umur` AS `umur`,`p`.`jenis_kelamin` AS `jenis_kelamin`,`r`.`role` AS `role`,`u`.`username` AS `username`,`u`.`password` AS `password` from ((`pegawai` `p` join `role` `r` on(`r`.`id_role` = `p`.`id_role`)) join `user` `u` on(`u`.`id_user` = `p`.`id_user`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pegawai`  AS  select `p`.`id_pegawai` AS `id_pegawai`,`p`.`nama_lengkap` AS `nama_lengkap`,`p`.`umur` AS `umur`,`p`.`jenis_kelamin` AS `jenis_kelamin`,`r`.`role` AS `role`,`u`.`username` AS `username`,`u`.`password` AS `password` from ((`pegawai` `p` join `role` `r` on((`r`.`id_role` = `p`.`id_role`))) join `user` `u` on((`u`.`id_user` = `p`.`id_user`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_pemeriksaan`
+--
+DROP TABLE IF EXISTS `v_pemeriksaan`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_pemeriksaan`  AS  select `k`.`nik_pangkat_nrp` AS `nik_pangkat_nrp`,`k`.`tempat` AS `tempat`,`k`.`tgl_lahir` AS `tgl_lahir`,`a`.`id_pemeriksaan` AS `id_pemeriksaan`,`a`.`no_rm` AS `no_rm`,`a`.`nama_lengkap` AS `nama_lengkap`,`a`.`kunjungan` AS `kunjungan`,`a`.`alamat` AS `alamat`,`a`.`orangtua_suami` AS `orangtua_suami`,`a`.`tgl_jam_pengkajian` AS `tgl_jam_pengkajian`,`a`.`tgllahir` AS `tgllahir`,`a`.`usia` AS `usia`,`a`.`keterbatasan_komunikasi` AS `keterbatasan_komunikasi`,`a`.`alergi` AS `alergi`,`a`.`alergi_obat` AS `alergi_obat`,`a`.`reaksi_alergi_obat` AS `reaksi_alergi_obat`,`a`.`alergi_makanan` AS `alergi_makanan`,`a`.`reaksi_alergi_makanan` AS `reaksi_alergi_makanan`,`a`.`alergi_lainnya` AS `alergi_lainnya`,`a`.`reaksi_alergi_lainnya` AS `reaksi_alergi_lainnya`,`a`.`sebutkan_eso` AS `sebutkan_eso`,`a`.`eso` AS `eso`,`a`.`keluhan_utama` AS `keluhan_utama`,`a`.`riwayat_saat_ini` AS `riwayat_saat_ini`,`a`.`riwayat_penyakit_dahulu` AS `riwayat_penyakit_dahulu`,`a`.`operasi_sebutkan` AS `operasi_sebutkan`,`a`.`kapan_operasi` AS `kapan_operasi`,`a`.`tindakan_lain_sebutkan` AS `tindakan_lain_sebutkan`,`a`.`kapan_tindakan_lain` AS `kapan_tindakan_lain`,`a`.`riwayat_penyakit_keluarga` AS `riwayat_penyakit_keluarga`,`a`.`riwayat_obat_yang_diminum` AS `riwayat_obat_yang_diminum`,`a`.`hubungan_pasien_dg_keluarga` AS `hubungan_pasien_dg_keluarga`,`a`.`status_psikologis` AS `status_psikologis`,`a`.`pekerjaan` AS `pekerjaan`,`a`.`td` AS `td`,`a`.`suhu` AS `suhu`,`a`.`nadi` AS `nadi`,`a`.`rr` AS `rr`,`a`.`alat_bantu` AS `alat_bantu`,`a`.`protesa` AS `protesa`,`a`.`cacat_tubuh` AS `cacat_tubuh`,`a`.`adl` AS `adl`,`a`.`keadaan_umum` AS `keadaan_umum`,`a`.`kesadaran` AS `kesadaran`,`a`.`bb` AS `bb`,`a`.`tb` AS `tb`,`a`.`gol_darah` AS `gol_darah`,`a`.`keadaan_gizi` AS `keadaan_gizi`,`a`.`skor_nyeri` AS `skor_nyeri`,`a`.`skala_nyeri` AS `skala_nyeri`,`a`.`lokasi_nyeri` AS `lokasi_nyeri`,`a`.`durasi_nyeri` AS `durasi_nyeri`,`a`.`frekuensi_nyeri` AS `frekuensi_nyeri`,`a`.`nyeri_hilang_bila` AS `nyeri_hilang_bila`,`a`.`pasien_tidak_seimbang` AS `pasien_tidak_seimbang`,`a`.`pasien_memegang_benda_lain` AS `pasien_memegang_benda_lain`,`a`.`hasil` AS `hasil`,`a`.`lapor_dokter` AS `lapor_dokter`,`a`.`id_pegawai` AS `id_pegawai` from (`asessmen_umum` `a` join `ktb` `k` on((`a`.`no_rm` = `k`.`no_rm`))) ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `icd_10`
+-- Indexes for table `asessmen_umum`
+--
+ALTER TABLE `asessmen_umum`
+  ADD PRIMARY KEY (`id_pemeriksaan`);
+
+--
+-- Indexes for table `icd_10`
 --
 ALTER TABLE `icd_10`
   ADD PRIMARY KEY (`id_icd`);
 
 --
--- Indeks untuk tabel `jenis_pelayanan`
+-- Indexes for table `jenis_pelayanan`
 --
 ALTER TABLE `jenis_pelayanan`
   ADD PRIMARY KEY (`id_jenis_pelayanan`);
 
 --
--- Indeks untuk tabel `ktb`
+-- Indexes for table `ktb`
 --
 ALTER TABLE `ktb`
-  ADD PRIMARY KEY (`id_ktb`);
+  ADD PRIMARY KEY (`no_rm`);
 
 --
--- Indeks untuk tabel `pasien`
+-- Indexes for table `kunjungan`
+--
+ALTER TABLE `kunjungan`
+  ADD PRIMARY KEY (`id_kunjungan`),
+  ADD KEY `no_rm` (`no_rm`),
+  ADD KEY `poli_kode` (`poli_kode`);
+
+--
+-- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
-  ADD PRIMARY KEY (`id_pasien`,`id_ktb`);
+  ADD PRIMARY KEY (`no_rm`);
 
 --
--- Indeks untuk tabel `pegawai`
+-- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id_pegawai`,`id_user`),
@@ -409,105 +620,124 @@ ALTER TABLE `pegawai`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `pemeriksaan`
+-- Indexes for table `pemeriksaan`
 --
 ALTER TABLE `pemeriksaan`
-  ADD PRIMARY KEY (`id_pemeriksaan`);
+  ADD PRIMARY KEY (`id_pemeriksaan`),
+  ADD KEY `no_rm` (`no_rm`);
 
 --
--- Indeks untuk tabel `role`
+-- Indexes for table `poli`
+--
+ALTER TABLE `poli`
+  ADD PRIMARY KEY (`poli_kode`);
+
+--
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indeks untuk tabel `soap`
+-- Indexes for table `soap`
 --
 ALTER TABLE `soap`
   ADD PRIMARY KEY (`id_soap`);
 
 --
--- Indeks untuk tabel `tarif_pelayanan`
+-- Indexes for table `tarif_pelayanan`
 --
 ALTER TABLE `tarif_pelayanan`
   ADD PRIMARY KEY (`id_tarif_pelayanan`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `icd_10`
+-- AUTO_INCREMENT for table `asessmen_umum`
+--
+ALTER TABLE `asessmen_umum`
+  MODIFY `id_pemeriksaan` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `icd_10`
 --
 ALTER TABLE `icd_10`
   MODIFY `id_icd` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_pelayanan`
+-- AUTO_INCREMENT for table `jenis_pelayanan`
 --
 ALTER TABLE `jenis_pelayanan`
   MODIFY `id_jenis_pelayanan` int(6) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `ktb`
+-- AUTO_INCREMENT for table `kunjungan`
 --
-ALTER TABLE `ktb`
-  MODIFY `id_ktb` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `kunjungan`
+  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `pasien`
+-- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id_pasien` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_rm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12363;
 
 --
--- AUTO_INCREMENT untuk tabel `pegawai`
+-- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
   MODIFY `id_pegawai` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `pemeriksaan`
+-- AUTO_INCREMENT for table `pemeriksaan`
 --
 ALTER TABLE `pemeriksaan`
-  MODIFY `id_pemeriksaan` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemeriksaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `soap`
+-- AUTO_INCREMENT for table `soap`
 --
 ALTER TABLE `soap`
   MODIFY `id_soap` int(6) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tarif_pelayanan`
+-- AUTO_INCREMENT for table `tarif_pelayanan`
 --
 ALTER TABLE `tarif_pelayanan`
   MODIFY `id_tarif_pelayanan` int(6) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `pegawai`
+-- Constraints for table `kunjungan`
+--
+ALTER TABLE `kunjungan`
+  ADD CONSTRAINT `kunjungan_ibfk_2` FOREIGN KEY (`poli_kode`) REFERENCES `poli` (`poli_kode`);
+
+--
+-- Constraints for table `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`),

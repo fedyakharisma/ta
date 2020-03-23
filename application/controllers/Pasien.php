@@ -43,6 +43,22 @@ class Pasien extends CI_Controller{
         redirect('Pasien/');
     }
 
+    public function editPasien()
+    {
+        $tanggaldaftar = $this->input->post('tanggaldaftar');
+        $norm = $this->input->post('norm');
+        $namapasien = $this->input->post('namapasien');
+        $nobpjs = $this->input->post('nobpjs');
+        $tempat = $this->input->post('tempat');
+        $tanggallahir = $this->input->post('tanggallahir');
+        $jk = $this->input->post('jk');
+        $alamat = $this->input->post('alamat');
+        $nipktpnrp = $this->input->post('nipktpnrp');
+        $keterangan = $this->input->post('keterangan');
+        $this->mPasien->updatePasien($tanggaldaftar, $norm,$namapasien, $nobpjs, $tempat, $tanggallahir, $jk, $alamat, $nipktpnrp, $keterangan);
+        redirect('Pasien/');
+    }
+
     public function hapusPasien($no_rm)
     {
         $this->mPasien->delete($no_rm);

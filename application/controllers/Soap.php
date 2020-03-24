@@ -17,6 +17,9 @@ class Soap extends CI_Controller
     public function tambah()
     {
         $data['title'] = 'SOAP';
+        $data['date_now'] = date('Y-m-d');
+        $data['time_now'] = date("H:i:s");
+        $data['icd10'] = $this->mSoap->getIcd10();
         $this->load->view('template/head');
         $this->load->view('template/menu');
         $this->load->view('soap/v_formSoap', $data);

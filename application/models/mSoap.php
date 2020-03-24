@@ -11,6 +11,12 @@ class mSoap extends CI_Model
         return $this->db->get("v_soap")->result();
     }
 
+    public function getIcd10()
+    {
+        $this->db->select("*");
+        return $this->db->get("icd_10")->result();
+    }
+
     public function getWhere($where, $table)
     {
         return $this->db->get_where($table, $where);

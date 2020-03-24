@@ -17,10 +17,8 @@
 
     <section class="content">
         <div class="container-fluid">
-            <didivv class="row">
-                <!-- left column -->
+            <div class="row">
                 <div class="col-md-12">
-                    <!-- Horizontal Form -->
                     <div class="card card-default">
                         <div class="card-header" style="background-color: brown">
                             <div class="row">
@@ -92,15 +90,63 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-info">Sign in</button>
-                                    </div>
+                                <div class="col-md-12">
+                                    <hr>
+                                    <table id="example1" class="table table-bordered table-hover">
+                                        <thead style="background-color: #b3b3b3;">
+                                            <tr>
+                                                <th class="text-center">
+                                                    Tgl/Jam
+                                                </th>
+                                                <th width="">Anamnesa dan Pemeriksaan</th>
+                                                <th class="">Diagnosa, Therapy, dan Paraf Dokter</th>
+                                                <th width="12%" class="text-center">ICD 10</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center"><?php echo $date_now . ' / ' . $time_now; ?></td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control" name="anamnesa_dan_pemeriksaan">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button></div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control" name="anamnesa_dan_pemeriksaan">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <select name="" class="form-control select2">
+                                                        <option value="">--</option>
+                                                        <?php
+                                                        foreach ($icd10 as $data) {
+                                                        ?>
+                                                            <option value=""><?php echo $data->kode; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info">Simpan</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                     <!-- /.card -->
                 </div>
-            </didivv>
+            </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>

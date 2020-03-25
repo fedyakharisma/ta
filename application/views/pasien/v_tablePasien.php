@@ -8,7 +8,7 @@ Content Wrapper. Contains page content -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Auth/') ?>"><i class="nav-icon fas fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active">Pasien</li>
+                        <li class="breadcrumb-item active">Data Pasien</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -20,27 +20,26 @@ Content Wrapper. Contains page content -->
         <div class="row">
             <div class="col-12">
                 <!-- /.card -->
-
+                
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <?php echo $title; ?>
+                            <a href class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal_add_new"> <i class="fas fa-plus-circle"></i> Tambah <?php echo $title; ?></a>
                         </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a>
                         <table id="example1" class="table table-bordered table-striped table-responsive">
-                            <thead>
-                                <tr style="font-size: 90%;">
-                                    <th style="width: 1%;">No</th>
-                                    <th>TANGGAL DAFTAR</th>
-                                    <th>NO.RM</th>
-                                    <th>NO.BPJS</th>
-                                    <th>NAMA</th>
-                                    <th>TANGGAL LAHIR</th>
+                            <thead style="background-color: #b3b3b3;">
+                                <tr class="text-center">
+                                    <th width="3%" class="text-center">No</th>
+                                    <th width="15%">Tanggal Daftar</th>
+                                    <th>No.RM</th>
+                                    <th>No.BPJS</th>
+                                    <th width="15%">Nama Pasien</th>
+                                    <th>Tanggal Lahir</th>
                                     <th>NIP/KTP/NRP</th>
-                                    <th>AKSI</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,34 +48,27 @@ Content Wrapper. Contains page content -->
                                 if (!empty($pasien)) {
                                     foreach ($pasien as $data) {
                                 ?>
-                                        <tr style="font-size: 90%;">
+                                        <tr style="font-size: 90%;" class="text-center">
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $data->tanggal_daftar; ?></td>
                                             <td><?php echo $data->no_rm; ?></td>
                                             <td><?php echo $data->no_bpjs; ?></td>
-                                            <td><?php echo $data->nama; ?></td>
+                                            <td class="text-left"><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->tempat; ?>, <?php echo $data->tanggal_lahir; ?></td>
                                             <td><?php echo $data->nip_ktp_nrp; ?></td>
-                                            <td>
-                                                <div class="row"><a href="" data-toggle="modal" data-target="#modal_detail<?php echo $data->no_rm; ?>">Detail</a></div>
-                                                <div class="row"><a href="" data-toggle="modal" data-target="#modal_edit<?php echo $data->no_rm; ?>">Ubah</a></div>
-                                                <div class="row"><a href="<?php echo base_url('Pasien/hapusPasien/' . $data->no_rm) ?>" onclick="return confirm('Hapus <?php echo $data->nama ?>?')" >Hapus</a></div>
+                                            <td class="text-center">
+                                                <div class="row">
+                                                    <div class="col-sm-4"><a href="" data-toggle="modal" data-target="#modal_detail<?php echo $data->no_rm; ?>"><i class="nav-icon fas btn fa-eye"></i></a></div>
+                                                    <div class="col-sm-4"><a href="" data-toggle="modal" data-target="#modal_edit<?php echo $data->no_rm; ?>"><i class="nav-icon fas btn fa-edit"></i></a></div>
+                                                    <div class="col-sm-4"><a href="<?php echo base_url('Pasien/hapusPasien/' . $data->no_rm) ?>" onclick="return confirm('Hapus <?php echo $data->nama ?>?')" ><i class="nav-icon fas btn fa-trash-alt"> </i></a></div>
+                                                </div>
                                             </td>
                                         </tr>
                                 <?php }
                                 } ?>
                             </tbody>
                             <tfoot>
-                                <tr style="font-size: 90%;">
-                                    <th>NO</th>
-                                    <th>TANGGAL DAFTAR</th>
-                                    <th>NO.RM</th>
-                                    <th>NO.BPJS</th>
-                                    <th>NAMA</th>
-                                    <th>TANGGAL LAHIR</th>
-                                    <th>NIP/KTP/NRP</th>
-                                    <th>AKSI</th>
-                                </tr>
+                                
                             </tfoot>
                         </table>
                     </div>
@@ -517,7 +509,7 @@ foreach ($pasien as $data) {
              
                             <div class="modal-footer">
                                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Tutup</button>
-                                <button type="submit" class="btn btn-default">Ubah</button>
+                                <button type="submit" class="btn btn-warning">Ubah</button>
                             </div>
                         </form>
                         </div>

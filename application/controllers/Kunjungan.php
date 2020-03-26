@@ -12,16 +12,18 @@ class Kunjungan extends CI_Controller
             redirect(site_url("Login/"));
         }
         $this->load->model('mKunjungan');
-        $this->load->model('mKtb');
+        $this->load->model('mPasien');
         $this->load->model('mPoliklinik');
     }
 
     public function tambahKunjungan()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal= date("Y-m-d H:i:s");
         $data = array(
             'no_rm' => $this->input->post('ktb'),
             'poli_kode' => $this->input->post('poli'),
-            'waktu' => $this->input->post('waktu'),
+            'waktu' => $tanggal,
             'keluhan' => $this->input->post('keluhan'),
             'status' => 'Belum diperiksa'
         );
@@ -32,6 +34,8 @@ class Kunjungan extends CI_Controller
     public function index()
     {
         $data['kunjungan'] = $this->mKunjungan->view();
+        $data['pasien'] = $this->mPasien->view();
+        $data['poliklinik'] = $this->mPoliklinik->view();
         $data['title'] = 'Data Kunjungan';
         $this->load->view('template/head');
         $this->load->view('template/menu');
@@ -41,7 +45,7 @@ class Kunjungan extends CI_Controller
 
     public function formKunjungan()
     {
-        $data['pegawai'] = $this->mKtb->view();
+        $data['pasien'] = $this->mPasien->view();
         $data['poliklinik'] = $this->mPoliklinik->view();
         $data['title'] = 'Form kunjungan';
         $this->load->view('template/head');

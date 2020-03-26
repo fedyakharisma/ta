@@ -25,15 +25,15 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 control-label">No. RM</label>
                                     <div class="col-sm-3">
-                                        <input type="hidden" name="waktu" value="<?php echo date('Y-m-d G:i:s'); ?>">
+                                        
                                         <select name="ktb" id="" class="form-control select2">
                                             <option value="">--PILIH--</option>
                                             <?php
-                                            if (!empty($pegawai)) {
-                                                foreach ($pegawai as $data) {
+                                            if (!empty($pasien)) {
+                                                foreach ($pasien as $data) {
                                             ?>
                                                     <option value="<?php echo $data->no_rm; ?>">
-                                                        <?php echo $data->no_rm . ' - ' . $data->nama_lengkap; ?>
+                                                        <?php echo $data->no_rm . ' - ' . $data->nama; ?>
                                                     </option>
                                             <?php }
                                             } ?>

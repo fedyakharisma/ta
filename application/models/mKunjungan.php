@@ -53,6 +53,11 @@ class mKunjungan extends CI_Model
     {
         $this->db->insert($table, $data);
     }
+    public function delete($no_rm)
+    {
+        $this->db->where('no_rm', $no_rm);
+        $this->db->delete('kunjungan');
+    }
 }
                         
 /* End of file mKunjungan.php */

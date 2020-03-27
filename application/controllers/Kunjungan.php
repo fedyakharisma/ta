@@ -53,6 +53,11 @@ class Kunjungan extends CI_Controller
         $this->load->view('kunjungan/v_formKunjungan', $data);
         $this->load->view('template/foot');
     }
+    public function hapusKunjungan($no_rm)
+    {
+        $this->mKunjungan->delete($no_rm);
+        redirect('Kunjungan/');
+    }
 }
         
     /* End of file  Kunjungan.php */

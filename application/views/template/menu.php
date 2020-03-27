@@ -54,6 +54,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="<?php echo site_url('Antrian/') ?>" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Antrian Pasien</p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="<?php echo base_url('Kunjungan/') ?>" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>Kunjungan</p>

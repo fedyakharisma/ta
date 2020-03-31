@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2020 at 06:26 AM
+-- Generation Time: Mar 31, 2020 at 06:25 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -25,16 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_kunjungan`
+-- Table structure for table `poli`
 --
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kunjungan`  AS  select `k`.`id_kunjungan` AS `id_kunjungan`,`p`.`poli_kode` AS `poli_kode`,`p`.`poli` AS `poli`,`t`.`no_rm` AS `no_rm`,`t`.`no_bpjs` AS `no_bpjs`,`t`.`nama` AS `nama`,`t`.`jenis_kelamin` AS `jenis_kelamin`,`t`.`alamat` AS `alamat`,`t`.`tempat` AS `tempat`,`t`.`tanggal_lahir` AS `tanggal_lahir`,`t`.`nip_ktp_nrp` AS `nip_ktp_nrp`,`t`.`keterangan` AS `keterangan`,`k`.`waktu` AS `waktu`,`k`.`keluhan` AS `keluhan`,`k`.`status` AS `status` from ((`kunjungan` `k` join `poli` `p` on((`k`.`poli_kode` = `p`.`poli_kode`))) join `pasien` `t` on((`k`.`no_rm` = `t`.`no_rm`))) ;
+CREATE TABLE `poli` (
+  `poli_kode` varchar(6) NOT NULL,
+  `poli` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- VIEW  `v_kunjungan`
--- Data: None
+-- Dumping data for table `poli`
 --
 
+INSERT INTO `poli` (`poli_kode`, `poli`) VALUES
+('PL003', 'Poli Umum'),
+('PL004', 'Poli Gigi dan Mulut'),
+('PL005', 'Poli KIA/KB');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `poli`
+--
+ALTER TABLE `poli`
+  ADD PRIMARY KEY (`poli_kode`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

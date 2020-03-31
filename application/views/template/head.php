@@ -34,19 +34,6 @@
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
       </ul>
-
-      <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-      <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -56,7 +43,8 @@
             <i class="fas fa-user"></i>
           </a>
           <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu dropdown-menu-sm dropdown-menu-right border-0 shadow">
-            <li><a href="<?php echo site_url('Profil/') ?>" class="dropdown-item dropdown-footer">Profil</a></li>
+            <li><a href="<?php echo site_url('Profil/') ?>" class="dropdown-item dropdown-footer">Ubah Profil</a></li>
+            <li><a href="<?php echo site_url('Profil/ubahPassword') ?>" class="dropdown-item dropdown-footer">Ubah Password</a></li>
             <li><a href="<?php echo site_url('Login/logout/') ?>" class="dropdown-item dropdown-footer">Logout</a></li>
           </ul>
         </li>

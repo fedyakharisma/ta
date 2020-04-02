@@ -18,16 +18,11 @@
                 <div class="col-md-12">
                     <div class="card card-default">
                         <div class="card-header">
-                            <h3 class="card-title"><?php echo $title ?></h3>
+                            <a href="" data-toggle="modal" data-target="#modal_Add" class="btn btn-default"><i class="fas fa-plus-circle"></i> Tambah <?php echo $title; ?></a>
                         </div>
                         <form class="form-horizontal" method="post" action="<?php echo base_url('Poliklinik/aksi_tambahPoli') ?>">
                             <div class="card-body">
-                                <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <a href="<?php echo base_url('Pegawai/formTambahPegawai') ?>" class="btn btn-default"><i class="fas fa-plus-circle"></i> Tambah Data</a>
-                                    </div>
-                                </div>
-                                <table id="example1" class="table table-bordered table-hover">
+                                <table id="example1" class="table table-bordered table-hover table-responsive">
                                     <thead style="background-color: #b3b3b3;">
                                         <tr style="font-size: 90%;">
                                             <th width="6%" class="text-center">
@@ -35,7 +30,7 @@
                                             </th>
                                             <th class="">Nama Lengkap</th>
                                             <th>Usia</th>
-                                            <th width="14%">Akses Login</th>
+                                            <th width="20%">Tempat/Tanggal Lahir</th>
                                             <th>Jabatan</th>
                                             <th width="13%" class="text-center">Aksi</th>
                                         </tr>
@@ -49,26 +44,14 @@
                                                 <tr style="font-size: 90%;">
                                                     <td class="text-center"><?php echo $no++; ?>.</td>
                                                     <td><?php echo $data->nama_lengkap ?></td>
-                                                    <td><?php echo $data->umur; ?> thn</td>
-                                                    <td>
-                                                        <?php
-                                                        if ($data->username == '') {
-                                                        ?>
-                                                            <a href="" class="" data-toggle="modal" data-target="#modal_akses<?php echo $data->id_pegawai; ?>">(+) tambah</a>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <a href="" data-toggle="modal" data-target="#modal_akses<?php echo $data->id_pegawai; ?>">Cek</a>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </td>
+                                                    <td><?php echo substr(date('Y-m-d'), 0, 4) - substr($data->tanggal_lahir, 0, 4); ?> thn</td>
+                                                    <td><?php echo $data->tempat_lahir . ' / ' . $data->tanggal_lahir; ?></td>
                                                     <td><?php echo $data->role; ?></td>
                                                     <td class="text-center">
-                                                        <a href="<?php echo site_url('Pegawai/formEditPegawai/' . $data->id_pegawai) ?>" class="">
+                                                        <a href="<?php echo site_url('Pegawai/formEditPegawai/' . $data->nip) ?>" class="">
                                                             <u>Ubah</u>
                                                         </a>
-                                                        <a href="<?php echo base_url('Pegawai/hapusPegawai/' . $data->id_pegawai) ?>" onclick="return confirm('Hapus <?php echo $data->nama_lengkap ?>?')" class="">
+                                                        <a href="<?php echo base_url('Pegawai/hapusPegawai/' . $data->nip) ?>" onclick="return confirm('Hapus <?php echo $data->nama_lengkap ?>?')" class="">
                                                             <u>Hapus</u>
                                                         </a>
                                                     </td>
@@ -78,18 +61,6 @@
                                         }
                                         ?>
                                     </tbody>
-                                    <tfoot style="background-color: #b3b3b3;">
-                                        <tr style="font-size: 90%;">
-                                            <th width="6%" class="text-center">
-                                                No.
-                                            </th>
-                                            <th class="">Nama Lengkap</th>
-                                            <th>Usia</th>
-                                            <th width="14%">Akses Login</th>
-                                            <th>Jabatan</th>
-                                            <th width="13%" class="text-center">Aksi</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </form>
@@ -107,9 +78,9 @@ foreach ($pegawai as $data) {
     $nama_lengkap = $data->nama_lengkap;
     $username = $data->username;
     $password = $data->password;
-    $id_pegawai = $data->id_pegawai;
+    $nip = $data->nip;
 ?>
-    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_akses<?php echo $data->id_pegawai; ?>" class="modal fade">
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_akses<?php echo $data->nip; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,3 +122,98 @@ foreach ($pegawai as $data) {
         </div>
     </div>
 <?php } ?>
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_Add" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo site_url('Pegawai/tambahPegawai') ?>">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">NIP</label>
+                                <div class="col-xs-8">
+                                    <input type="text" name="nip" class="form-control" required placeholder="Cth. 19xxxxxxxxxxxxxxx">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Nama Lengkap</label>
+                                <div class="col-xs-8">
+                                    <input name="nama_lengkap" class="form-control" type="text" placeholder="Cth. Nama lengkap" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">No. Hp/Telp</label>
+                                <div class="col-xs-8">
+                                    <input name="notelp" class="form-control" type="number" placeholder="Cth. 08xxxxxxxxxx" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Jenis Kelamin</label>
+                                <div class="col-xs-8">
+                                    <select name="jenis_kelamin" class="form-control" required>
+                                        <option value="">-PILIH-</option>
+                                        <option value="l">Laki-laki</option>
+                                        <option value="p">Perempuan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Tempat Lahir</label>
+                                <div class="col-xs-8">
+                                    <input name="tempat_lahir" class="form-control" type="text" placeholder="Cth. Surabaya" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-xs-3">Tanggal Lahir</label>
+                                <div class="col-xs-4">
+                                    <input name="tanggal_lahir" class="form-control" type="date" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Alamat</label>
+                        <div class="col-xs-8">
+                            <textarea name="alamat" class="form-control" placeholder="Cth. Jl.Sudirxxxxx...." required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Jabatan</label>
+                        <div class="col-xs-8">
+                            <select name="role" class="form-control" required>
+                                <option value="">-PILIH-</option>
+                                <?php
+                                foreach ($role as $data) {
+                                ?>
+                                    <option value="<?php echo $data->id_role; ?>"><?php echo $data->role; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info">Simpan</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

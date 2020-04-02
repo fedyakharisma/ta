@@ -19,7 +19,7 @@ class mPegawai extends CI_Model
     {
         $this->db->select("*");
         $this->db->order_by("nama_lengkap", "ASC");
-        return $this->db->get("v_pegawai")->result();
+        return $this->db->get("v_data_pegawai")->result();
     }
 
     public function insert_data($data, $table)

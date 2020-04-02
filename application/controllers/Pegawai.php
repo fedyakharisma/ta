@@ -32,6 +32,7 @@ class Pegawai extends CI_Controller
     public function index()
     {
         $data['title'] = "Data pegawai";
+        $data['role'] = $this->mRole->getAll();
         $data['pegawai'] = $this->mPegawai->view();
         $this->load->view('template/head');
         $this->load->view('template/menu');
@@ -55,19 +56,22 @@ class Pegawai extends CI_Controller
         $nama = $this->input->post('nama_lengkap');
         $alamat = $this->input->post('alamat');
         $notelp = $this->input->post('notelp');
-        $tgllhr = $this->input->post('tgllhr');
         $jenis_kelamin = $this->input->post('jenis_kelamin');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
         $role = $this->input->post('role');
+
         $data = array(
-            'pgw_nip' => $nip,
-            'pgw_nama' => $nama,
-            'pgw_alamat' => $alamat,
-            'pgw_telp' => $notelp,
-            'pgw_tgl_lhr' => $tgllhr,
-            'pgw_jenis_kelamin' => $jenis_kelamin,
-            'role' => $role
+            'nip' => $nip,
+            'nama_lengkap' => $nama,
+            'tempat_lahir' => $tempat_lahir,
+            'tanggal_lahir' => $tanggal_lahir,
+            'alamat' => $alamat,
+            'jenis_kelamin' => $jenis_kelamin,
+            'no_telp' => $notelp,
+            'id_role' => $role
         );
-        $this->mPegawai->insert_data($data, 'tb_pegawai');
+        $this->mPegawai->insert_data($data, 'data_pegawai');
         redirect('Pegawai/');
     }
 

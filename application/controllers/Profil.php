@@ -16,10 +16,10 @@ class Profil extends CI_Controller
     public function index()
     {
         $where = array(
-            'username' => $this->session->userdata("nama")
+            'nip' => $this->session->userdata("nip")
         );
-        $data['profil'] = $this->mProfil->getWhere($where, 'v_pegawai')->result();
-        $data['title'] = 'Profil';
+        $data['profil'] = $this->mProfil->getWhere($where, 'v_data_pegawai')->result();
+        $data['title'] = 'Ubah Profil';
         $this->load->view('template/head');
         $this->load->view('template/menu');
         $this->load->view('profil/index.php', $data);
@@ -33,6 +33,20 @@ class Profil extends CI_Controller
         $this->load->view('template/menu');
         $this->load->view('profil/ubahPassword', $data);
         $this->load->view('template/foot');
+    }
+
+    public function ubahDataProfil()
+    {
+        $nip = $this->input->post('nip');
+        $nama_lengkap = $this->input->post('nama_lengkap');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
+        $alamat = $this->input->post('alamat');
+        $no_telp = $this->input->post('no_telp');
+
+        $this->mProfil->update($nip, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $alamat, $no_telp);
+        redirect('Profil/');
     }
 }
         

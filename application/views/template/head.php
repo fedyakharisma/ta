@@ -39,7 +39,6 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <?php echo $this->session->userdata("nama"); ?>
-            <?php echo $this->session->userdata("status"); ?>
             <i class="fas fa-user"></i>
           </a>
           <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu dropdown-menu-sm dropdown-menu-right border-0 shadow">

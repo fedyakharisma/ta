@@ -4,15 +4,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mPegawai extends CI_Model
 {
-    function update_data($where, $table)
+    function update($nip, $nama_lengkap, $no_telp, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $alamat, $jabatan, $id_data_pegawai)
     {
-        return $this->db->get_where($table, $where);
+        $hasil = $this->db->query("UPDATE data_pegawai SET nip='$nama_lengkap', nama_lengkap='$no_telp', tempat_lahir='$tempat_lahir', tanggal_lahir='$alamat', alamat='$jabatan', jenis_kelamin='$jenis_kelamin', no_telp='$no_telp', id_role='$jabatan' WHERE id_data_pegawai='$id_data_pegawai'");
+        return $hasil;
     }
 
-    public function delete($pgw_nip)
+    public function delete($id_data_pegawai)
     {
-        $this->db->where('pgw_nip', $pgw_nip);
-        $this->db->delete('tb_pegawai');
+        $this->db->where('id_data_pegawai', $id_data_pegawai);
+        $this->db->delete('data_pegawai');
     }
 
     public function view()

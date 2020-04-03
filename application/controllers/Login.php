@@ -24,16 +24,17 @@ class Login extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
+        $sembunyikan_password = md5($password);
 
         $where = array(
             'username' => $username,
-            'password' => md5($password)
+            'password' => $sembunyikan_password
         );
 
-        $cek['login'] = $this->mLogin->cekLogin("v_data_pegawai", $where)->num_rows();
+        $cek = $this->mLogin->cekLogin("v_data_pegawai", $where)->num_rows();
 
         if ($cek > 0) {
-            $query = $this->db->query("SELECT * FROM `v_data_pegawai` WHERE username = '$username'");
+            $query = $this->db->query("SELECT * FROM `v_data_pegawai` WHERE username = '$username' && password = '$sembunyikan_password'");
             $row = $query->row_array();
             if (isset($row)) {
                 $row['nama_lengkap'];
@@ -46,7 +47,7 @@ class Login extends CI_Controller
             $this->session->set_userdata($data_session);
             redirect(site_url('Auth/'));
         } else {
-            echo $where['password'];
+            echo $sembunyikan_password;
         }
     }
 

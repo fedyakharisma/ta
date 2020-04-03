@@ -29,8 +29,7 @@
                                                 No.
                                             </th>
                                             <th class="">Nama Lengkap</th>
-                                            <th>Usia</th>
-                                            <th width="20%">Tempat/Tanggal Lahir</th>
+                                            <th width="25%">Tempat/Tanggal Lahir</th>
                                             <th>Jabatan</th>
                                             <th width="13%" class="text-center">Aksi</th>
                                         </tr>
@@ -41,17 +40,19 @@
                                         if (!empty($pegawai)) {
                                             foreach ($pegawai as $data) {
                                         ?>
-                                                <tr style="font-size: 90%;">
+                                                <tr style="font-size: 82%;">
                                                     <td class="text-center"><?php echo $no++; ?>.</td>
                                                     <td><?php echo $data->nama_lengkap ?></td>
-                                                    <td><?php echo substr(date('Y-m-d'), 0, 4) - substr($data->tanggal_lahir, 0, 4); ?> thn</td>
-                                                    <td><?php echo $data->tempat_lahir . ' / ' . $data->tanggal_lahir; ?></td>
+                                                    <td><?php echo $data->tempat_lahir . ' / ' . date('d F Y', strtotime($data->tanggal_lahir)); ?></td>
                                                     <td><?php echo $data->role; ?></td>
                                                     <td class="text-center">
-                                                        <a href="<?php echo site_url('Pegawai/formEditPegawai/' . $data->nip) ?>" class="">
+                                                        <a href="" data-toggle="modal" data-target="#modalDetail<?php echo $data->id_data_pegawai; ?>" class="">
+                                                            <u>Detail</u>
+                                                        </a>
+                                                        <a href="" data-toggle="modal" data-target="#modalEdit<?php echo $data->id_data_pegawai; ?>" class="">
                                                             <u>Ubah</u>
                                                         </a>
-                                                        <a href="<?php echo base_url('Pegawai/hapusPegawai/' . $data->nip) ?>" onclick="return confirm('Hapus <?php echo $data->nama_lengkap ?>?')" class="">
+                                                        <a href="<?php echo base_url('Pegawai/hapusPegawai/' . $data->id_data_pegawai); ?>" data-toggle="" data-target="" class="" onclick="return confirm('Hapus <?php echo $data->nama_lengkap ?>?')">
                                                             <u>Hapus</u>
                                                         </a>
                                                     </td>
@@ -75,53 +76,200 @@
 </div>
 <?php
 foreach ($pegawai as $data) {
-    $nama_lengkap = $data->nama_lengkap;
-    $username = $data->username;
-    $password = $data->password;
-    $nip = $data->nip;
 ?>
-    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_akses<?php echo $data->nip; ?>" class="modal fade">
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modalDetail<?php echo $data->id_data_pegawai; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Akses Login <?php echo $nama_lengkap ?></h5>
+                    <h5 class="modal-title">Detail data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 </div>
-                <form class="form-horizontal" action="<?php echo base_url('Pegawai/editAksesPegawai') ?>" method="post" enctype="multipart/form-data" role="form">
+                <form class="form-horizontal">
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label class="control-label col-xs-3">Username</label>
-                            <div class="col-xs-8">
-                                <input type="hidden" name="pgw_nip" value="<?php echo $id_pegawai; ?>">
-                                <input name="username" class="form-control" type="text" value="<?php echo $username; ?>">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">NIP</label>
+                                    <div class="col-xs-8">
+                                        <input type="" class="form-control" value="<?php echo $data->nip; ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Nama Lengkap</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" type="" value="<?php echo $data->nama_lengkap; ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">No. Hp/Telp</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" readonly value="<?php echo $data->no_telp; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Jenis Kelamin</label>
+                                    <div class="col-xs-8">
+                                        <input readonly value="<?php if ($data->jenis_kelamin == 'l') {
+                                                                    echo "Laki-laki";
+                                                                } else {
+                                                                    echo "Perempuan";
+                                                                } ?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Tempat Lahir</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" readonly value="<?php echo $data->tempat_lahir; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Tanggal Lahir</label>
+                                    <div class="col-xs-4">
+                                        <input class="form-control" readonly value="<?php echo $data->tanggal_lahir; ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="control-label col-xs-3">Password</label>
+                            <label class="control-label col-xs-3">Alamat</label>
                             <div class="col-xs-8">
-                                <input type="text" name="password" class="form-control" value="<?php echo $password ?>">
+                                <textarea readonly class="form-control"><?php echo $data->alamat; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Jabatan</label>
+                            <div class="col-xs-8">
+                                <input readonly value="<?php echo $data->role; ?>" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <?php
-                        if ($username == '') {
-                        ?>
-                            <button type="submit" class="btn btn-default">Simpan</button>
-                        <?php
-                        } else {
-                        ?>
-                            <button type="submit" class="btn btn-default">Ubah</button>
-                        <?php
-                        }
-                        ?>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Tutup</button>
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
+<?php
+}
+foreach ($pegawai as $dataEdit) { ?>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modalEdit<?php echo $dataEdit->id_data_pegawai; ?>" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ubah data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                </div>
+                <form class="form-horizontal" method="POST" action="<?php echo site_url('Pegawai/editPegawai') ?>">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">NIP</label>
+                                    <div class="col-xs-8">
+                                        <input type="hidden" name="idEdit" value="<?php echo $dataEdit->id_data_pegawai; ?>">
+                                        <input type="text" name="nipEdit" class="form-control" value="<?php echo $dataEdit->nip; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Nama Lengkap</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" type="text" name="nama_lengkapEdit" value="<?php echo $dataEdit->nama_lengkap; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">No. Hp/Telp</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" value="<?php echo $dataEdit->no_telp; ?>" name="no_telpEdit" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Jenis Kelamin</label>
+                                    <div class="col-xs-8">
+                                        <select name="jenis_kelaminEdit" id="" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                            <option value="l" <?php if ($dataEdit->jenis_kelamin == 'l') {
+                                                                    echo "Selected";
+                                                                } ?>>Laki-laki</option>
+                                            <option value="p" <?php if ($dataEdit->jenis_kelamin == 'p') {
+                                                                    echo "Selected";
+                                                                } ?>>Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Tempat Lahir</label>
+                                    <div class="col-xs-8">
+                                        <input class="form-control" value="<?php echo $dataEdit->tempat_lahir; ?>" name="tempat_lahirEdit" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3">Tanggal Lahir</label>
+                                    <div class="col-xs-4">
+                                        <input class="form-control" value="<?php echo $dataEdit->tanggal_lahir; ?>" name="tanggal_lahirEdit" type="date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Alamat</label>
+                            <div class="col-xs-8">
+                                <textarea name="alamatEdit" class="form-control"><?php echo $dataEdit->alamat; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Jabatan</label>
+                            <div class="col-xs-8">
+                                <select name="jabatanEdit" id="" class="form-control">
+                                    <option value="<?php echo $dataEdit->id_role; ?>"><?php echo $dataEdit->role; ?></option>
+                                    <option value="">--Ubah--</option>
+                                    <?php
+                                    foreach ($role as $dataRole) {
+                                    ?>
+                                        <option value="<?php echo $dataRole->id_role; ?>"><?php echo $dataRole->role; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Ubah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <?php } ?>
+
 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_Add" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -206,6 +354,12 @@ foreach ($pegawai as $data) {
                                     <option value="<?php echo $data->id_role; ?>"><?php echo $data->role; ?></option>
                                 <?php } ?>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Username</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="username" class="form-control" placeholder="Cth. Username">
                         </div>
                     </div>
                 </div>

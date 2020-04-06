@@ -92,6 +92,65 @@
     </div>
     <!-- /.content-wrapper -->
 
+    <!-- START ADD -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_Add" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    </div>
+                    <form class="form-horizontal" method="post" action="<?php echo site_url('Kunjungan/tambahKunjungan') ?>">
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label class="col-sm-2 control-label">No. RM</label>
+                                <div class="col-sm-8">
+
+                                    <select name="ktb" id="" class="form-control select2">
+                                        <option value="">--PILIH--</option>
+                                        <?php
+                                        if (!empty($pasien)) {
+                                            foreach ($pasien as $data) {
+                                                ?>
+                                                <option value="<?php echo $data->no_rm; ?>">
+                                                    <?php echo $data->no_rm . ' - ' . $data->nama; ?>
+                                                </option>
+                                                <?php }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 control-label">Poli</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control select2" name="poli">
+                                            <option>--PILIH--</option>
+                                            <?php
+                                            if (!empty($poliklinik)) {
+                                                foreach ($poliklinik as $data) {
+                                                    ?>
+                                                    <option value="<?php echo $data->poli_kode; ?>"><?php echo $data->poli; ?></option>
+                                                    <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 control-label">Keluhan</label>
+                                        <div class="col-sm-8">
+                                            <textarea name="keluhan" rows="4" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary" value="Tambah Data">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
     <!-- start modal upload -->
     <?php
     foreach ($kunjungan as $data) {
@@ -212,7 +271,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-xs-3" >Alamat</label>
                                         <div class="col-xs-8">
-                                            <textarea name="alamat" class="form-control" placeholder="Cth. Jl.Sudirxxxxx...." disabled value=""><?php echo $alamat; ?></textarea>
+                                            <textarea name="alamat" class="form-control" rows="1" placeholder="Cth. Jl.Sudirxxxxx...." disabled value=""><?php echo $alamat; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +281,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-xs-3" >Keluhan</label>
                                         <div class="col-xs-8">
-                                            <textarea name="keterangan" class="form-control" type="text" placeholder="Keterangan..." disabled value=""><?php echo $keluhan; ?></textarea>
+                                            <textarea name="keterangan" class="form-control" rows="1" type="text" placeholder="Keterangan..." disabled value=""><?php echo $keluhan; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -317,62 +376,4 @@
                 </div>
             </div>
         </div>
-        <!-- START ADD -->
-        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_Add" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Add data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    </div>
-                    <form class="form-horizontal" method="post" action="<?php echo site_url('Kunjungan/tambahKunjungan') ?>">
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label class="col-sm-2 control-label">No. RM</label>
-                                <div class="col-sm-8">
-
-                                    <select name="ktb" id="" class="form-control select2">
-                                        <option value="">--PILIH--</option>
-                                        <?php
-                                        if (!empty($pasien)) {
-                                            foreach ($pasien as $data) {
-                                                ?>
-                                                <option value="<?php echo $data->no_rm; ?>">
-                                                    <?php echo $data->no_rm . ' - ' . $data->nama; ?>
-                                                </option>
-                                                <?php }
-                                            } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 control-label">Poli</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control select2" name="poli">
-                                            <option>--PILIH--</option>
-                                            <?php
-                                            if (!empty($poliklinik)) {
-                                                foreach ($poliklinik as $data) {
-                                                    ?>
-                                                    <option value="<?php echo $data->poli_kode; ?>"><?php echo $data->poli; ?></option>
-                                                    <?php }
-                                                } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 control-label">Keluhan</label>
-                                        <div class="col-sm-8">
-                                            <textarea name="keluhan" rows="4" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" value="Tambah Data">
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
+    <?php } ?>

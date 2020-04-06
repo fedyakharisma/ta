@@ -14,6 +14,15 @@ class Pegawai extends CI_Controller
         $this->load->model('mRole');
     }
 
+    public function resetPassword()
+    {
+        $id_data_pegawai = $this->input->post('id');
+        $username = $this->input->post('username');
+        $password = md5($username);
+        $this->mPegawai->updatePass($id_data_pegawai, $password);
+        redirect('Pegawai/');
+    }
+
     public function editPegawai()
     {
         $nip = $this->input->post('nipEdit');
@@ -26,7 +35,7 @@ class Pegawai extends CI_Controller
         $alamat = $this->input->post('alamatEdit');
         $jabatan = $this->input->post('jabatanEdit');
 
-        $this->mPegawai->update($id_data_pegawai, $nip, $nama_lengkap, $no_telp, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $alamat, $jabatan);
+        $this->mPegawai->update($id_data_pegawai, $nip, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $alamat, $jenis_kelamin, $no_telp, $jabatan);
         redirect('Pegawai/');
     }
 

@@ -41,8 +41,13 @@
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 control-label">Ulangi password baru</label>
-                                            <div class="col-sm-7">
-                                                <input type="password" class="form-control" name="ulangi_password_baru">
+                                            <div class="col-sm-7 mb-3">
+                                                <input id="password-field" type="password" class="form-control" name="ulangi_password_baru">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

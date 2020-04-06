@@ -4,9 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mPegawai extends CI_Model
 {
-    function update($nip, $nama_lengkap, $no_telp, $jenis_kelamin, $tempat_lahir, $tanggal_lahir, $alamat, $jabatan, $id_data_pegawai)
+    function updatePass($id_data_pegawai, $password)
     {
-        $hasil = $this->db->query("UPDATE data_pegawai SET nip='$nama_lengkap', nama_lengkap='$no_telp', tempat_lahir='$tempat_lahir', tanggal_lahir='$alamat', alamat='$jabatan', jenis_kelamin='$jenis_kelamin', no_telp='$no_telp', id_role='$jabatan' WHERE id_data_pegawai='$id_data_pegawai'");
+        $hasil = $this->db->query("UPDATE data_pegawai SET password='$password' WHERE id_data_pegawai='$id_data_pegawai'");
+        return $hasil;
+    }
+
+    function update($id_data_pegawai, $nip, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $alamat, $jenis_kelamin, $no_telp, $jabatan)
+    {
+        $hasil = $this->db->query("UPDATE data_pegawai SET nip='$nip', nama_lengkap='$nama_lengkap', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', no_telp='$no_telp', id_role='$jabatan' WHERE id_data_pegawai='$id_data_pegawai'");
         return $hasil;
     }
 

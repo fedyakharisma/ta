@@ -31,6 +31,7 @@
                                             <th class="">Nama Lengkap</th>
                                             <th width="25%">Tempat/Tanggal Lahir</th>
                                             <th>Jabatan</th>
+                                            <th width="15%">Reset Password</th>
                                             <th width="13%" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -45,6 +46,13 @@
                                                     <td><?php echo $data->nama_lengkap ?></td>
                                                     <td><?php echo $data->tempat_lahir . ' / ' . date('d F Y', strtotime($data->tanggal_lahir)); ?></td>
                                                     <td><?php echo $data->role; ?></td>
+                                                    <td class="text-center">
+                                                        <form action="<?php echo site_url('Pegawai/resetPassword') ?>" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" value="<?php echo $data->id_data_pegawai ?>" name="id">
+                                                            <input type="hidden" value="<?php echo $data->username ?>" name="username">
+                                                            <button class="btn btn-sm">Reset</button>
+                                                        </form>
+                                                    </td>
                                                     <td class="text-center">
                                                         <a href="" data-toggle="modal" data-target="#modalDetail<?php echo $data->id_data_pegawai; ?>" class="">
                                                             <u>Detail</u>
@@ -175,7 +183,7 @@ foreach ($pegawai as $dataEdit) { ?>
                     <h5 class="modal-title">Ubah data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 </div>
-                <form class="form-horizontal" method="POST" action="<?php echo site_url('Pegawai/editPegawai') ?>">
+                <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="<?php echo site_url('Pegawai/editPegawai') ?>">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">

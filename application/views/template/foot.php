@@ -40,6 +40,8 @@
 <script src="<?php echo base_url('assets/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- Select2 -->
 <script src="<?php echo base_url('assets/') ?>plugins/select2/js/select2.full.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
 </body>
 
 <script>
@@ -55,6 +57,21 @@
         "sEmptyTable": "Data Poli kosong"
       }
     });
+  });
+  $('.toastrDefaultSuccess').click(function() {
+    toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+  });
+
+  $(".toggle-password").click(function() {
+
+    // show hide pass
+    $(this).toggleClass("fa-eye fa-eye-slash");
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+      input.attr("type", "text");
+    } else {
+      input.attr("type", "password");
+    }
   });
 </script>
 

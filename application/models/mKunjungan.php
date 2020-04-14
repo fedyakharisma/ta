@@ -32,6 +32,7 @@ class mKunjungan extends CI_Model
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli Umum');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 
@@ -39,6 +40,7 @@ class mKunjungan extends CI_Model
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli KIA/KB');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 
@@ -46,6 +48,7 @@ class mKunjungan extends CI_Model
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli Gigi dan Mulut');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 

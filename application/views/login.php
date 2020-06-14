@@ -34,7 +34,6 @@
                 <form action="<?php echo site_url('Login/aksi_login/'); ?>" method="post">
                     <?php echo $this->session->flashdata('loginSalah') ?>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username">
                         <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -42,7 +41,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input id="password-field" type="password" class="form-control" name="password" placeholder="Password">
+                        <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" autocomplete="off">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>

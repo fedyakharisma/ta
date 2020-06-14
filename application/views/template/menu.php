@@ -45,43 +45,6 @@
             </li>
           </ul>
         </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>
-              Antrian
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo base_url('Antrian') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Antrian</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('Antrianpoliumum/') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Poli Umum</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('Antrianpoligigi/') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Poli Gigi</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('Antrianpolikia/') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Poli Kia</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
         <li class="nav-item">
           <a href="<?php echo site_url('Pegawai/') ?>" class="nav-link">
             <!-- <?php if ($menu == 'Pegawai Medis') {
@@ -147,7 +110,7 @@
           <a href="#" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <p>
-              Hasil Pemeriksaan
+              Hasil Pemeriksaan 
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -216,4 +179,4 @@
       </ul>
     </nav>
   </div>
-</aside>
+</aside>)

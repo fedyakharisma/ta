@@ -10,19 +10,15 @@ class Auth extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             redirect(site_url("Login/"));
         }
-        $this->load->model('mCount');
+        $this->load->model('mLogin');
     }
 
     public function index()
     {
-        $data['graph'] = $this->mCount->get_data_stok();
-        $data['pasienbaru'] = $this->mCount->countpasienbaru();
-        $data['pasienlama'] = $this->mCount->countpasienlama();
-        $data['pasienantri'] = $this->mCount->countpasienantri();
-        $data['pasienselesai'] = $this->mCount->countpasienselesai();
+        $data['menu'] = 'Home';
         $this->load->view('template/head');
-        $this->load->view('template/menu');
-        $this->load->view('index', $data);
+        $this->load->view('template/menu', $data);
+        $this->load->view('index');
         $this->load->view('template/foot');
     }
 

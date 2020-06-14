@@ -15,7 +15,6 @@ class Pemeriksaan extends CI_Controller
 
     public function asessmenUmum($no_rm)
     {
-        // $where = array('no_rm' => $no_rm);
         $where = array(
             'no_rm' => $no_rm,
             'id_kunjungan' => $this->input->post('id_kunjungan'),
@@ -34,7 +33,10 @@ class Pemeriksaan extends CI_Controller
 
     public function asessmenKiaKb($no_rm)
     {
-        $where = array('no_rm' => $no_rm);
+        $where = array(
+            'no_rm' => $no_rm,
+            'id_kunjungan' => $this->input->post('id_kunjungan')
+        );
         $data['asessmenKiaKb'] = $this->mKunjungan->getByid($where, 'v_kunjungan')->result();
         $data['date_now'] = date('Y-m-d');
         $data['time_now'] = date("H:i:s");
@@ -48,7 +50,10 @@ class Pemeriksaan extends CI_Controller
 
     public function asessmenGigiMulut($no_rm)
     {
-        $where = array('no_rm' => $no_rm);
+        $where = array(
+            'no_rm' => $no_rm,
+            'id_kunjungan' => $this->input->post('id_kunjungan')
+        );
         $data['asessmenGigiMulut'] = $this->mKunjungan->getByid($where, 'v_kunjungan')->result();
         $data['date_now'] = date('Y-m-d');
         $data['time_now'] = date("H:i:s");

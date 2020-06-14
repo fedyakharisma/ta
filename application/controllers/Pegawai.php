@@ -14,29 +14,7 @@ class Pegawai extends CI_Controller
         $this->load->model('mRole');
     }
 
-    // public function formEditPegawai()
-    public function table_data_pegawai()
-    {
-        $data['menu'] = "Pegawai Medis";
-        $data['title'] = "Data pegawai";
-        $this->load->view('template/head');
-        $this->load->view('template/menu', $data);
-        $this->load->view('data_pegawai/pegawai_medis/pegawai_ajax', $data);
-        $this->load->view('template/foot');
-    }
-
-    public function iklan()
-    {
-        $this->load->view('data_pegawai/pegawai_medis/iklan');
-    }
-
-    public function data_pegawai()
-    {
-        $data = $this->mPegawai->pegawai_list();
-        echo json_encode($data);
-    }
-
-    public function resetPassword()
+    public function formEditPegawai()
     {
         $data['title'] = 'Edit data pegawai';
         $this->load->view('template/head');
@@ -53,11 +31,10 @@ class Pegawai extends CI_Controller
 
     public function index()
     {
-        $data['menu'] = "Pegawai Medis";
         $data['title'] = "Data pegawai";
         $data['pegawai'] = $this->mPegawai->view();
         $this->load->view('template/head');
-        $this->load->view('template/menu', $data);
+        $this->load->view('template/menu');
         $this->load->view('data_pegawai/pegawai_medis/index', $data);
         $this->load->view('template/foot');
     }

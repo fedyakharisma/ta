@@ -10,52 +10,54 @@ class mKunjungan extends CI_Model
         $hasil = $query->row();
         return $hasil->id_kunjungan;
     }
-
+    
 
     public function hitungJumlahAssetU()
-    {
-        $this->db->where('poli_kode', 'PL003');
+    {   
+        $this->db->where('poli_kode','PL003');
         $query = $this->db->get('v_antrian');
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
         }
     }
 
     public function hitungJumlahAssetG()
-    {
-        $this->db->where('poli_kode', 'PL004');
+    {   
+        $this->db->where('poli_kode','PL004');
         $query = $this->db->get('v_antrian');
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
         }
     }
 
     public function hitungJumlahAssetK()
-    {
-        $this->db->where('poli_kode', 'PL005');
+    {   
+        $this->db->where('poli_kode','PL005');
         $query = $this->db->get('v_antrian');
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
         }
     }
 
-    function updateData($where, $data, $table)
-    {
-        $this->db->where($where);
-        $this->db->update($table, $data);
-    }
-
-    public function updateStatusKunjungan($no_rm, $poli)
+    public function updateStatusKunjungan($no_rm)
     {
         $data = array('status' => 'Selesai diperiksa');
         $this->db->where('no_rm', $no_rm);
-        $this->db->where('poli_kode', $poli);
         return $this->db->update('kunjungan', $data);
     }
 

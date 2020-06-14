@@ -9,13 +9,6 @@ class mPegawai extends CI_Model
         return $this->db->get_where($table, $where);
     }
 
-    function pegawai_list()
-    {
-        $hasil = $this->db->query('SELECT * FROM data_pegawai');
-        return $hasil->result();
-    }
-    // function updatePass($id_data_pegawai, $password)
-
     public function delete($pgw_nip)
     {
         $this->db->where('pgw_nip', $pgw_nip);

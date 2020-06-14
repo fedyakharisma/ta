@@ -9,11 +9,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="<?php echo site_url('Auth/') ?>" class="nav-link">
-            <!-- <?php if ($menu == 'Home') {
-                    echo 'active';
-                  } else {
-                  } ?> -->
+          <a href="pages/gallery.html" class="nav-link">
             <i class="nav-icon fas fa-home"></i>
             <p>
               Home
@@ -84,22 +80,14 @@
 
         <li class="nav-item">
           <a href="<?php echo site_url('Pegawai/') ?>" class="nav-link">
-            <!-- <?php if ($menu == 'Pegawai Medis') {
-                    echo 'active';
-                  } else {
-                  } ?> -->
             <i class="far fa-circle nav-icon"></i>
-            <p>Pegawai Medis </p>
+            <p>Pegawai Medis</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="<?php echo base_url('Poliklinik/') ?>" class="nav-link">
-            <!-- <?php if ($menu == 'Poliklinik') {
-                    echo 'active';
-                  } else {
-                  } ?> -->
             <i class="far fa-circle nav-icon"></i>
-            <p>Poliklinik </p>
+            <p>Poliklinik</p>
           </a>
         </li>
         <li class="nav-item">
@@ -143,74 +131,10 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>
-              Hasil Pemeriksaan
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo base_url('HasilPemeriksaan/pemeriksaanUmum') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Umum</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('HasilPemeriksaan/pemeriksaanKiaKb') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>KIA/KB</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('HasilPemeriksaan/pemeriksaanGigiMulut') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Gigi dan Mulut</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>
-              SOAP
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo base_url('Soap/Umum') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Umum</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('Soap/KiaKb') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>KIA/KB</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url('') ?>" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>Gigi dan Mulut</p>
-              </a>
-            </li>
-          </ul>
-        </li> -->
         <li class="nav-item">
-          <a href="<?php echo base_url('Soap') ?>" class="nav-link">
+          <a href="<?php echo base_url('Soap/') ?>" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-            <p>SOAP </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<?php echo base_url('Soap/revisiSoap') ?>" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>SOAP (revisi)(ngubah tampilan hasil pmriksaan spt pemeriksaan</p>
+            <p>SOAP</p>
           </a>
         </li>
       </ul>

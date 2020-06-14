@@ -36,13 +36,12 @@ class Login extends CI_Controller
                 'nama' => $username,
                 'status' => 'login'
             );
+
             $this->session->set_userdata($data_session);
-            $this->session->set_flashdata('loginBerhasil', 'login berhasil');
+
             redirect(site_url('Auth/'));
         } else {
-            $url = site_url();
-            echo $this->session->set_flashdata('loginSalah', '<div style="color: red; font-size: 90%;">Username atau password salah!</div>');
-            redirect($url);
+            echo $where['password'];
         }
     }
 

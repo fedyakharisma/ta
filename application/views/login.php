@@ -10,15 +10,13 @@
     <!-- font -->
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
     <!-- icon -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/flag-icon-css/css/css.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/')?>plugins/flag-icon-css/css/css.css">
     <!-- bootstrap icheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- tema -->
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>dist/css/adminlte.min.css">
     <!-- font source sans pro -->
     <link href="<?php echo base_url('assets/') ?>plugins/flag-icon-css/css/ionicons.min.css" rel="stylesheet">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/toastr/toastr.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -32,10 +30,8 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg"></p>
                 <form action="<?php echo site_url('Login/aksi_login/'); ?>" method="post">
-                    <?php echo $this->session->flashdata('loginSalah') ?>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Username" name="username">
-                        <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
@@ -87,5 +83,4 @@
         });
     </script>
 </body>
-
 </html>

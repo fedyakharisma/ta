@@ -31,14 +31,14 @@
                 <p class="login-box-msg"></p>
                 <form action="<?php echo site_url('Login/aksi_login/'); ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
+                        <input type="text" class="form-control" placeholder="Username" name="username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" autocomplete="off">
+                        <input id="password-field" type="password" class="form-control" name="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>

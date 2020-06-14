@@ -1,6 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -8,13 +6,13 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?php echo base_url('Auth') ?>"><i class="nav-icon fas fa-home"></i> Home</a></li>
                         <?php
-                        if ($title == 'Data Pemeriksaan Umum') {
+                        if ($title == 'Data Pemeriksaan Poli Umum') {
                         ?>
-                            <li class="breadcrumb-item active">Pemeriksaan Umum</li>
-                        <?php } elseif ($title == 'Data Pemeriksaan KIA / KB') { ?>
-                            <li class="breadcrumb-item active">Pemeriksaan KIA / KB</li>
-                        <?php } elseif ($title == 'Data Pemeriksaan Gigi dan Mulut') { ?>
-                            <li class="breadcrumb-item active">Pemeriksaan Gigi dan Mulut</li>
+                            <li class="breadcrumb-item active">Pemeriksaan Poli Umum</li>
+                        <?php } elseif ($title == 'Data Pemeriksaan Poli KIA / KB') { ?>
+                            <li class="breadcrumb-item active">Pemeriksaan Poli KIA dan KB</li>
+                        <?php } elseif ($title == 'Data Pemeriksaan Poli Gigi dan Mulut') { ?>
+                            <li class="breadcrumb-item active">PemeriksaanPoli  Gigi dan Mulut</li>
                         <?php
                         } ?>
                     </ol>
@@ -40,10 +38,11 @@
                                                 No.
                                             </th>
                                             <th width="">No. Rm/Nama Lengkap</th>
+                                            <th>Poli</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Usia</th>
-                                            <th>Tindakan</th>
-                                            <th width="12%" class="text-center">Aksi</th>
+                                            <th>Asessmen</th>
+                                            <!-- <th width="12%" class="text-center">Aksi</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,7 +50,7 @@
                                         $no = 1;
                                         foreach ($pemeriksaan as $data) {
                                         ?>
-                                            <tr>
+                                            <tr style="font-size: 95%;">
                                                 <td class="text-center"><?php echo $no++; ?>.</td>
                                                 <td><?php echo $data->no_rm . ' / ' . $data->nama_lengkap; ?></td>
                                                 <td width="15%">
@@ -62,22 +61,25 @@
                                                         echo 'Perempuan';
                                                     } ?>
                                                 </td>
+                                                <td><?php echo $data->no_rm . ' / ' . $data->nama; ?></td>
+                                                <td><?php echo $data->poli; ?></td>
+                                                <td width="15%"><?php echo $data->jenis_kelamin; ?></td>
                                                 <td>
                                                     <?php echo substr($date_now, 0, 4) - substr($data->tgl_lahir, 0, 4); ?> Tahun
                                                 </td>
                                                 <td width='10%' class="text-center">
                                                     <a href="#" class="" data-toggle="modal" data-target="#modal_periksa<?php echo $data->no_rm; ?>">
-                                                        <i class="nav-icon fas btn fa-eye"></i>
+                                                        <u>Asessmen</u>
                                                     </a>
                                                 </td>
-                                                <td class="text-center">
+                                                <!-- <td class="text-center">
                                                     <a href="#" class="" data-toggle="modal" data-target="#modal_ubah<?php echo $data->id_kunjungan; ?>">
                                                         <i class="nav-icon fas btn fa-edit"></i>
                                                     </a>
                                                     <a href="<?php echo base_url('poliklinik/hapusPoliklinik/' . $data->poli_kode) ?>" onclick="return confirm('Hapus <?php echo $data->poli ?>?')" class="">
                                                         <i class="nav-icon fas btn fa-trash-alt"> </i>
                                                     </a>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         <?php
                                         }
@@ -99,13 +101,11 @@
 foreach ($pemeriksaan as $data) {
     $id_kunjungan = $data->id_kunjungan;
     $no_rm = $data->no_rm;
-    $nrp = $data->nik_pangkat_nrp;
-    $nama_lengkap = $data->nama_lengkap;
     $jenis_kelamin = $data->jenis_kelamin;
     $alamat = $data->alamat;
     $tempat = $data->tempat;
-    $tgl_lahir = $data->tgl_lahir;
-    $orangtua_suami = $data->orangtua_suami;
+    $tanggal_lahir = $data->tanggal_lahir;
+    // $orangtua_suami = $data->orangtua_suami;
     $waktu = $data->waktu;
     $status = $data->status;
     $keluhan = $data->keluhan;
@@ -115,7 +115,7 @@ foreach ($pemeriksaan as $data) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><?php echo '(' . $no_rm . ') ' . $nama_lengkap; ?></h5>
+                    <h5 class="modal-title"><?php echo '(' . $no_rm . ') ' . $data->nama; ?></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 </div>
                 <?php if ($poli == 'Poli Umum') { ?>
@@ -140,7 +140,7 @@ foreach ($pemeriksaan as $data) {
             </div>
         </div>
     </div>
-    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_ubah<?php echo $id_kunjungan; ?>" class="modal fade">
+    <!-- <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="modal_ubah<?php echo $id_kunjungan; ?>" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -184,5 +184,5 @@ foreach ($pemeriksaan as $data) {
                             </form>
             </div>
         </div>
-    </div>
+    </div> -->
 <?php } ?>

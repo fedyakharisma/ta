@@ -4,6 +4,12 @@
  */
 class mPoliklinik extends CI_Model
 {
+    function poliklinik_list()
+    {
+        $hasil = $this->db->query('SELECT * FROM poli');
+        return $hasil->result();
+    }
+
     public function edit($kode)
     {
         $data = array(

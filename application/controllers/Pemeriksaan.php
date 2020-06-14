@@ -15,7 +15,12 @@ class Pemeriksaan extends CI_Controller
 
     public function asessmenUmum($no_rm)
     {
-        $where = array('no_rm' => $no_rm);
+        // $where = array('no_rm' => $no_rm);
+        $where = array(
+            'no_rm' => $no_rm,
+            'id_kunjungan' => $this->input->post('id_kunjungan'),
+            'status' => 'Belum diperiksa'
+        );
         $data['asessmenUmum'] = $this->mKunjungan->getByid($where, 'v_kunjungan')->result();
         $data['date_now'] = date('Y-m-d');
         $data['time_now'] = date("H:i:s");
@@ -57,7 +62,8 @@ class Pemeriksaan extends CI_Controller
 
     public function pemeriksaanUmum()
     {
-        $data['title'] = 'Data Pemeriksaan Umum';
+        $data['menu'] = 'Pemeriksaan';
+        $data['title'] = 'Data Pemeriksaan Poli Umum';
         $data['date_now'] = date('Y-m-d');
         $data['pemeriksaan'] = $this->mKunjungan->viewGetWhereUmum();
         $this->load->view('template/head');
@@ -68,7 +74,8 @@ class Pemeriksaan extends CI_Controller
 
     public function pemeriksaanKiaKb()
     {
-        $data['title'] = 'Data Pemeriksaan KIA / KB';
+        $data['menu'] = 'Pemeriksaan';
+        $data['title'] = 'Data Pemeriksaan Poli KIA / KB';
         $data['date_now'] = date('Y-m-d');
         $data['pemeriksaan'] = $this->mKunjungan->viewGetWhereKiaKb();
         $this->load->view('template/head');
@@ -79,7 +86,8 @@ class Pemeriksaan extends CI_Controller
 
     public function pemeriksaanGigiMulut()
     {
-        $data['title'] = 'Data Pemeriksaan Gigi dan Mulut';
+        $data['menu'] = 'Pemeriksaan';
+        $data['title'] = 'Data Pemeriksaan Poli Gigi dan Mulut';
         $data['date_now'] = date('Y-m-d');
         $data['pemeriksaan'] = $this->mKunjungan->viewGetWhereGigiMulut();
         $this->load->view('template/head');

@@ -41,7 +41,7 @@
                                         if (!empty($pemeriksaan)) {
                                             foreach ($pemeriksaan as $data) {
                                         ?>
-                                                <tr>
+                                                <tr style="font-size: 82%;">
                                                     <td class="text-center"><?php echo $no++; ?>.</td>
                                                     <td><?php echo $data->no_rm . ' / ' . $data->nama_lengkap; ?></td>
                                                     <td><?php echo substr($data->tgl_jam_pengkajian, 11, 5) . ' / ' . date('d F Y', strtotime($data->tgl_jam_pengkajian)) ?></td>

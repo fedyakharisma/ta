@@ -23,13 +23,13 @@
                         </div>
                         <form class="form-horizontal" method="post" action="<?php echo base_url('Poliklinik/aksi_tambahPoli') ?>">
                             <div class="card-body">
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <div class="col-sm-3">
                                         <input type="text" name="nama_poli" class="form-control"  placeholder="Contoh: (Poli Gigi)">
                                         <input type="hidden" name="kode_poli" class="form-control"  placeholder="" value="PL<?php echo sprintf('%03s', $poli_kode) ?>">
                                     </div>
                                     <input type="submit" class="btn btn-default" value="Tambahkan" name="submit">
-                                </div>
+                                </div> -->
                                 <table id="example1" class="table table-bordered table-hover">
                                     <thead style="background-color: #b3b3b3;">
                                         <tr>
@@ -41,18 +41,17 @@
                                             <th width="12%" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="show_data">
                                         <?php
-                                        $no = 1;
-                                        if (!empty($poliklinik)) {
-                                            foreach ($poliklinik as $data) {
+                                        // $no = 1;
+                                        // if (!empty($poliklinik)) {
+                                        //     foreach ($poliklinik as $data) {
                                         ?>
-                                                <tr>
+                                        <!-- <tr>
                                                     <td class="text-center"><?php echo $no++; ?>.</td>
                                                     <td><?php echo $data->poli_kode ?></td>
                                                     <td><?php echo $data->poli ?></td>
                                                     <td class="text-center">
-                                                        <!-- <a href="<?php echo base_url('poliklinik/edit/' . $data->poli_kode) ?>">Cek</a> -->
                                                         <a href="" class="" data-toggle="modal" data-target="#modal_edit<?php echo $data->poli_kode; ?>">
                                                             <i class="nav-icon fas btn fa-edit"></i>
                                                         </a>
@@ -60,20 +59,12 @@
                                                             <i class="nav-icon fas btn fa-trash-alt"> </i>
                                                         </a>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                         <?php
-                                            }
-                                        }
+                                        //     }
+                                        // }
                                         ?>
                                     </tbody>
-                                    <tfoot style="background-color: #b3b3b3;">
-                                        <tr>
-                                            <th class="text-center">No.</th>
-                                            <th>Kode</th>
-                                            <th>Nama Poliklinik</th>
-                                            <th width="12%" class="text-center">Aksi</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </form>
@@ -88,6 +79,40 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        tampil_data_barang(); //pemanggilan fungsi tampil barang.
+
+        $('#mydata').dataTable();
+
+        //fungsi tampil barang
+        function tampil_data_barang() {
+            $.ajax({
+                type: 'ajax',
+                url: '<?php echo base_url() ?>Poliklinik/data_poliklinik',
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var i;
+                    var no = '1';
+                    for (i = 0; i < data.length; i++) {
+                        html += '<tr>' +
+                            '<td>' + data[i].poli_kode + '</td>' +
+                            '<td>' + data[i].poli_kode + '</td>' +
+                            '<td>' + data[i].poli + '</td>' +
+                            // '<td><a href="" data-toggle="modal" data-target="#modalDetail' + data[i].id_data_pegawai + '" class=""> <u> Detail </u> </a></td > ' +
+                            '<td><a href="javascript:;" data-id="' + data[i].id_data_pegawai + '" data-toggle="modal" data-target="#modalEdit><button  data-toggle="modal" data-target="#ubah-data" class="btn btn-info">Ubah</button></a></td > ' +
+                            '</tr>';
+                    }
+                    $('#show_data').html(html);
+                }
+
+            });
+        }
+
+    });
+</script>
 <!-- start modal upload -->
 <?php
 foreach ($poliklinik as $data) {

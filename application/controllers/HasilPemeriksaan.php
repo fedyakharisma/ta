@@ -19,7 +19,7 @@ class HasilPemeriksaan extends CI_Controller
     {
         $data['title'] = 'Hasil Pemeriksaan Gigi dan Mulut';
         $data['date_now'] = date('Y-m-d');
-        $data['pemeriksaan'] = $this->mAsessmenGigiMulut->viewGetWhereUmum();
+        $data['pemeriksaan'] = $this->mAsessmenGigiMulut->getWhere('soap = 0', 'asessmen_gigi_mulut')->result();
         $this->load->view('template/head');
         $this->load->view('template/menu');
         $this->load->view('hasil_pemeriksaan/gigi_mulut/index', $data);
@@ -39,11 +39,12 @@ class HasilPemeriksaan extends CI_Controller
 
     public function pemeriksaanUmum()
     {
+        $data['menu'] = "Hasil Pemeriksaan";
         $data['title'] = 'Hasil Pemeriksaan Umum';
         $data['date_now'] = date('Y-m-d');
-        $data['pemeriksaan'] = $this->mAsessmenUmum->viewGetWhereUmum();
+        $data['pemeriksaan'] = $this->mAsessmenGigiMulut->getWhere('soap = 0', 'asessmen_umum')->result();
         $this->load->view('template/head');
-        $this->load->view('template/menu');
+        $this->load->view('template/menu', $data);
         $this->load->view('hasil_pemeriksaan/umum/index', $data);
         $this->load->view('template/foot');
     }

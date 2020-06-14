@@ -17,9 +17,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url('assets/') ?>dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   <!-- jquery utk ajax-->
   <script src="<?php echo base_url('assets/') ?>plugins/jquery/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/') ?>plugins/jquery/jquery.js"></script>
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">

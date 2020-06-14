@@ -57,6 +57,19 @@
 
 <script>
   $(function() {
+
+    <?php if ($this->session->flashdata('loginBerhasil')) { ?>
+      toastr.success('Login berhasil, Selamat datang!');
+    <?php
+    } elseif ($this->session->flashdata('tambahData')) { ?>
+      toastr.success('Data tersimpan');
+    <?php
+    } elseif ($this->session->flashdata('hapusData')) { ?>
+      toastr.error('Data terhapus');
+    <?php
+    } elseif ($this->session->flashdata('ubahData')) { ?>
+      toastr.success('Data diubah');
+    <?php } ?>
     //Initialize Select2 Elements
     $('.select2').select2({
       theme: 'bootstrap4'

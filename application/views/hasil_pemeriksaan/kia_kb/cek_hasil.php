@@ -1114,7 +1114,7 @@
                                                         <td>*<i>Nama lengkap beserta gelar</i></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href="<?php echo site_url('HasilPemeriksaan/pemeriksaanKiaKb') ?>" class="btn btn-default col-sm-12">Kembali</a></td>
+                                                        <td><a href="<?php echo site_url('Soap/formKiaKb/' . $data->id_pemeriksaan) ?>" class="btn btn-primary col-sm-12" target="_blank">Lanjut Pemeriksaan <i class="nav-icon fas fa-arrow-right"></i></a></td>
                                                     </tr>
                                                 </table>
                                             </div>

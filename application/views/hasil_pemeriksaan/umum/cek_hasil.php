@@ -17,12 +17,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-default">
-                        <div class="card-header">
+                        <!-- <div class="card-header">
                             <h3 class="card-title">
-                                ASESSMEN UMUM
                             </h3>
-                        </div>
-                        <form class="form-horizontal" method="post" action="<?php echo site_url('Asessmen/tambahAsessmenUmum') ?>">
+                        </div> -->
+                        <form class="form-horizontal" method="" action="">
                             <div class="card-body">
                                 <?php
                                 $no = 1;
@@ -1114,7 +1113,7 @@
                                                         <td>*<i>Nama lengkap beserta gelar</i></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><a href="<?php echo site_url('HasilPemeriksaan/pemeriksaanUmum') ?>" class="btn btn-default col-sm-12">Kembali</a></td>
+                                                        <td><a href="<?php echo site_url('Soap/formUmum/' . $data->id_pemeriksaan); ?>" target="_blank" class="btn btn-primary col-sm-12">Lanjut Pemeriksaan <i class="nav-icon fas fa-arrow-right"></i></a></td>
                                                     </tr>
                                                 </table>
                                             </div>

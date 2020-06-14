@@ -25,8 +25,8 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <div class="col-sm-3">
-                                        <input type="text" name="nama_poli" class="form-control"  placeholder="Contoh: (Poli Gigi)">
-                                        <input type="hidden" name="kode_poli" class="form-control"  placeholder="" value="PL<?php echo sprintf('%03s', $poli_kode) ?>">
+                                        <input type="text" name="nama_poli" class="form-control" id="" placeholder="Contoh: (Poli Gigi)">
+                                        <input type="hidden" name="kode_poli" class="form-control" id="" placeholder="" value="PL<?php echo sprintf('%03s', $poli_kode) ?>">
                                     </div>
                                     <input type="submit" class="btn btn-default" value="Tambahkan" name="submit">
                                 </div>

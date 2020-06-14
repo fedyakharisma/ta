@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mKunjungan extends CI_Model
 {
+<<<<<<< HEAD
     public function cekIdkunjungan()
     {
         $query = $this->db->query("SELECT MAX(id_kunjungan) as id_kunjungan from kunjungan");
@@ -55,29 +56,18 @@ class mKunjungan extends CI_Model
     }
 
     public function updateStatusKunjungan($no_rm)
+=======
+    function updateData($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
+    public function updateStatusKunjungan($no_rm, $poli)
+>>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
     {
         $data = array('status' => 'Selesai diperiksa');
         $this->db->where('no_rm', $no_rm);
-        return $this->db->update('kunjungan', $data);
-    }
-
-    public function updateStatusKunjunganA($no_rm)
-    {
-        $data = array('status' => 'Dalam Antrian');
-        $this->db->where('no_rm', $no_rm);
-        return $this->db->update('kunjungan', $data);
-    }
-
-    public function updateStatusKunjungannext($id_kunjungan)
-    {
-        $data = array('status' => 'Diperiksa');
-        $this->db->where('id_kunjungan', $id_kunjungan);
-        return $this->db->update('kunjungan', $data);
-    }
-    public function updateStatusKunjunganback($id_kunjungan)
-    {
-        $data = array('status' => 'Dalam Antrian');
-        $this->db->where('id_kunjungan', $id_kunjungan);
         return $this->db->update('kunjungan', $data);
     }
 
@@ -96,16 +86,12 @@ class mKunjungan extends CI_Model
         $this->db->select("*");
         return $this->db->get("v_kunjungan")->result();
     }
-    public function viewberattinggi()
-    {
-        $this->db->select("*");
-        return $this->db->get("kunjungan")->result();
-    }
 
     public function viewGetWhereUmum()
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli Umum');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 
@@ -113,6 +99,7 @@ class mKunjungan extends CI_Model
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli KIA/KB');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 
@@ -120,6 +107,7 @@ class mKunjungan extends CI_Model
     {
         $this->db->select("*");
         $this->db->where('poli', 'Poli Gigi dan Mulut');
+        $this->db->where('status', 'Belum diperiksa');
         return $this->db->get("v_kunjungan")->result();
     }
 
@@ -127,9 +115,9 @@ class mKunjungan extends CI_Model
     {
         $this->db->insert($table, $data);
     }
-    public function delete($id_kunjungan)
+    public function delete($no_rm)
     {
-        $this->db->where('id_kunjungan', $id_kunjungan);
+        $this->db->where('no_rm', $no_rm);
         $this->db->delete('kunjungan');
     }
 }

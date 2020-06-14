@@ -53,6 +53,7 @@
                                         ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $no++; ?>.</td>
+<<<<<<< HEAD
                                                 <td><?php echo $data->no_rm . ' / ' . $data->nama_lengkap; ?></td>
                                                 <td width="15%">
                                                     <?php
@@ -62,8 +63,13 @@
                                                         echo 'Perempuan';
                                                     } ?>
                                                 </td>
+=======
+                                                <td><?php echo $data->no_rm . ' / ' . $data->nama; ?></td>
+                                                <td><?php echo $data->poli; ?></td>
+                                                <td width="15%"><?php echo $data->jenis_kelamin; ?></td>
+>>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
                                                 <td>
-                                                    <?php echo substr($date_now, 0, 4) - substr($data->tgl_lahir, 0, 4); ?> Tahun
+                                                    <?php echo substr($date_now, 0, 4) - substr($data->tanggal_lahir, 0, 4); ?> Tahun
                                                 </td>
                                                 <td width='10%' class="text-center">
                                                     <a href="#" class="" data-toggle="modal" data-target="#modal_periksa<?php echo $data->no_rm; ?>">
@@ -129,6 +135,7 @@ foreach ($pemeriksaan as $data) {
                                 <div class="form-group">
                                     <label class="control-label col-xs-3">Keluhan</label>
                                     <div class="col-xs-8">
+                                        <input type="hidden" value="<?php echo $data->id_kunjungan; ?>" name="id_kunjungan">
                                         <textarea readonly name="" class="form-control" rows="5"><?php echo $keluhan; ?></textarea>
                                     </div>
                                 </div>

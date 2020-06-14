@@ -4,22 +4,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mPegawai extends CI_Model
 {
-    function update_data($where, $table)
+
+<<<<<<< HEAD
+    public function delete($pgw_nip)
+=======
+    function pegawai_list()
     {
-        return $this->db->get_where($table, $where);
+        $hasil = $this->db->query('SELECT * FROM data_pegawai');
+        return $hasil->result();
+    }
+    function updatePass($id_data_pegawai, $password)
+    {
+        $hasil = $this->db->query("UPDATE data_pegawai SET password='$password' WHERE id_data_pegawai='$id_data_pegawai'");
+        return $hasil;
     }
 
-    public function delete($pgw_nip)
+    function update($id_data_pegawai, $nip, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $alamat, $jenis_kelamin, $no_telp, $jabatan)
     {
-        $this->db->where('pgw_nip', $pgw_nip);
-        $this->db->delete('tb_pegawai');
+        $hasil = $this->db->query("UPDATE data_pegawai SET nip='$nip', nama_lengkap='$nama_lengkap', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', no_telp='$no_telp', id_role='$jabatan' WHERE id_data_pegawai='$id_data_pegawai'");
+        return $hasil;
+    }
+
+    public function delete($id_data_pegawai)
+>>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
+    {
+        $this->db->where('id_data_pegawai', $id_data_pegawai);
+        $this->db->delete('data_pegawai');
     }
 
     public function view()
     {
         $this->db->select("*");
         $this->db->order_by("nama_lengkap", "ASC");
-        return $this->db->get("v_pegawai")->result();
+        return $this->db->get("v_data_pegawai")->result();
     }
 
     public function insert_data($data, $table)

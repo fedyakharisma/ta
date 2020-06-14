@@ -154,26 +154,12 @@ Content Wrapper. Contains page content -->
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-3" >Nomor Telepon</label>
-                                            <div class="col-xs-8">
-                                                <input name="nomortelp" class="form-control" type="text" placeholder="Cth.081xxxxxx...." required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-3" >Keterangan</label>
-                                            <div class="col-xs-8">
-                                                <input name="keterangan" class="form-control" type="text" placeholder="Keterangan..." required>
-                                            </div>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-3" >Keterangan</label>
+                                    <div class="col-xs-8">
+                                        <input name="keterangan" class="form-control" type="text" placeholder="Keterangan..." required>
                                     </div>
                                 </div>
-
 
                                 <!--<div class="form-group">
                                     <label class="control-label col-xs-3" >Satuan</label>
@@ -220,7 +206,6 @@ foreach ($pasien as $data) {
     $nipktpnrp = $data->nip_ktp_nrp;
     $alamatt= $data->alamat;
     $keterangan = $data->keterangan;
-    $nomortelp = $data->nomor;
     $jeniskelamin = $data->jenis_kelamin;
 ?>
                     
@@ -324,7 +309,7 @@ foreach ($pasien as $data) {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label col-xs-3" >Alamat</label>
                                             <div class="col-xs-8">
@@ -333,14 +318,13 @@ foreach ($pasien as $data) {
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-3" >Nomor Telepon</label>
+                                        <!-- <div class="form-group">
+                                            <label class="control-label col-xs-3" >Keterangan</label>
                                             <div class="col-xs-8">
-                                                <input name="nomortelp" disabled class="form-control" value="<?php echo $nomortelp; ?>" type="text" placeholder="Cth.081xxxxxx...." >
+                                                <input name="keterangan" class="form-control" type="text" placeholder="Keterangan..." disabled value="<?php echo $keterangan; ?>">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
@@ -480,7 +464,7 @@ foreach ($pasien as $data) {
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label col-xs-3" >Alamat</label>
                                             <div class="col-xs-8">
@@ -490,12 +474,12 @@ foreach ($pasien as $data) {
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-3" >Nomor Telepon</label>
+                                        <!-- <div class="form-group">
+                                            <label class="control-label col-xs-3" >Keterangan</label>
                                             <div class="col-xs-8">
-                                                <input name="nomortelp" class="form-control" value="<?php echo $nomortelp; ?>" type="text" placeholder="Cth.081xxxxxx...." >
+                                                <input name="keterangan" class="form-control" type="text" placeholder="Keterangan..." disabled value="<?php echo $keterangan; ?>">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
@@ -543,26 +527,4 @@ foreach ($pasien as $data) {
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-<script>
-        $(document).ready(function(){
-            // // CALL FUNCTION SHOW PRODUCT
-            // show_product();
- 
-            // Enable pusher logging - don't include this in production
-            Pusher.logToConsole = true;
- 
-            var pusher = new Pusher('8cf463b119a9af6cadec', {
-                cluster: 'ap1',
-                forceTLS: true
-            });
- 
-            var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-                if(data.message === 'success'){
-                    window.setTimeout(function(){location.reload()},1000);
-                }
-            });
- 
-        });
-    </script>
+<!-- /.content-wrapper

@@ -15,11 +15,16 @@ class Asessmen extends CI_Controller
         $this->load->model('mPasien');
         $this->load->model('mAsessmenUmum');
         $this->load->model('mKunjungan');
+        $this->load->model('mAsessmenKiaKb');
+        $this->load->model('mAsessmenGigiMulut');
     }
 
     public function asessmenUmum($no_rm)
     {
-        $where = array('no_rm' => $no_rm);
+        $where = array(
+            'no_rm' => $no_rm,
+            'id_kunjungan' => ''
+        );
         $data['asessmenUmum'] = $this->mKunjungan->getByid($where, 'v_pemeriksaan')->result();
         $data['date_now'] = date('Y-m-d');
         $data['time_now'] = date("H:i:s");
@@ -41,16 +46,17 @@ class Asessmen extends CI_Controller
         $jmpengkajian = $this->input->post('jm_pengkajian');
         $tgljampengkajian = $tglpengkajian . ' ' . $jmpengkajian;
         $data = array(
-            // 'no_rm' => $this->input->post('no_rm'),
-            // 'nama_lengkap' => $this->input->post('nama_pasien'),
-            // 'kunjungan' => $this->input->post('kunjungan'),
-            // 'alamat' => $this->input->post('alamat_pasien'),
-            // 'orangtua_suami' => $this->input->post('orang_tua_suami'),
-            // 'tgl_jam_pengkajian' => $tgljampengkajian,
-            // 'tgllahir' => $this->input->post('tgl_lahir'),
-            // 'usia' => $this->input->post('usia'),
-            // 'keterbatasan_komunikasi' => $this->input->post('keterbatasan'),
+            'no_rm' => $this->input->post('no_rm'),
+            'nama_lengkap' => $this->input->post('nama_pasien'),
+            'kunjungan' => $this->input->post('kunjungan'),
+            'alamat' => $this->input->post('alamat_pasien'),
+            // 'orangtua_suami' => $this->input->post('orang_tua_suami'), MASIH BLM ADA FIELD
+            'tgl_jam_pengkajian' => $tgljampengkajian,
+            'tgllahir' => $this->input->post('tgl_lahir'),
+            'usia' => $this->input->post('usia'),
+            'keterbatasan_komunikasi' => $this->input->post('keterbatasan'),
             // // ALERGI
+<<<<<<< HEAD
             // 'alergi' => $this->input->post('alergi'),
             // 'alergi_obat' => $this->input->post('sebutkan_alergi_obat'),
             // 'reaksi_alergi_obat' => $this->input->post('reaksi_obat'),
@@ -94,9 +100,57 @@ class Asessmen extends CI_Controller
             // 'nyeri_hilang_bila' => $this->input->post('nyeri_hilang_bila'),
             // 'pasien_tidak_seimbang' => $this->input->post('soal_a'),
             // 'pasien_memegang_benda_lain' => $this->input->post('soal_b')
+=======
+            'alergi' => $this->input->post('alergi'),
+            'alergi_obat' => $this->input->post('sebutkan_alergi_obat'),
+            'reaksi_alergi_obat' => $this->input->post('reaksi_obat'),
+            'alergi_makanan' => $this->input->post('sebutkan_alergi_makanan'),
+            'reaksi_alergi_makanan' => $this->input->post('reaksi_makanan'),
+            'alergi_lainnya' => $this->input->post('sebutkan_alergi_lainnya'),
+            'reaksi_alergi_lainnya' => $this->input->post('reaksi_lainnya'),
+            'sebutkan_eso' => $this->input->post('sebutkan_nama_obat'),
+            'eso' => $this->input->post('eso'),
+            'keluhan_utama' => $this->input->post('keluhan_utama'),
+            'riwayat_saat_ini' => $this->input->post('riwayat_saat_ini'),
+            'riwayat_penyakit_dahulu' => $this->input->post('riwayat_penyakit_dahulu'),
+            'operasi_sebutkan' => $this->input->post('operasi_sebutkan'),
+            'tindakan_lain_sebutkan' => $this->input->post('tindakan_lain'),
+            'riwayat_penyakit_keluarga' => $this->input->post('riwayat_penyakit_keluarga'),
+            'riwayat_obat_yang_diminum' => $this->input->post('riwayat_obat_yang_diminum'),
+            'kapan_operasi' => $this->input->post('kapan_operasi'),
+            'kapan_tindakan_lain' => $this->input->post('kapan_tindakan_lain'),
+            'hubungan_pasien_dg_keluarga' => $this->input->post('hubungan_pasien_dg_anggota_keluarga'),
+            'status_psikologis' => $this->input->post('status_psikologis'),
+            'pekerjaan' => $this->input->post('pekerjaan'),
+            'td' => $this->input->post('td'),
+            'suhu' => $this->input->post('suhu'),
+            'nadi' => $this->input->post('nadi'),
+            'rr' => $this->input->post('rr'),
+            'alat_bantu' => $this->input->post('alat_bantu'),
+            'protesa' => $this->input->post('protesa'),
+            'cacat_tubuh' => $this->input->post('cacat_tubuh'),
+            'adl' => $this->input->post('adl'),
+            'keadaan_umum' => $this->input->post('keadaan_umum'),
+            'kesadaran' => $this->input->post('kesadaran'),
+            'bb' => $this->input->post('bb'),
+            'tb' => $this->input->post('tb'),
+            'gol_darah' => $this->input->post('goldar'),
+            'keadaan_gizi' => $this->input->post('keadaan_gizi'),
+            'skor_nyeri' => $this->input->post('skor_nyeri'),
+            'skala_nyeri' => $this->input->post('skala_nyeri'),
+            'lokasi_nyeri' => $this->input->post('lokasi'),
+            'durasi_nyeri' => $this->input->post('durasi'),
+            'frekuensi_nyeri' => $this->input->post('frekuensi'),
+            'nyeri_hilang_bila' => $this->input->post('nyeri_hilang_bila'),
+            'pasien_tidak_seimbang' => $this->input->post('soal_a'),
+            'pasien_memegang_benda_lain' => $this->input->post('soal_b'),
+            'hasil' => $this->input->post('hasil'),
+            'lapor_dokter' => $this->input->post('diberitahu_ke_dokter'),
+            'id_pegawai' => $this->session->userdata('id')
+>>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
         );
         $this->mAsessmenUmum->input_data($data, 'asessmen_umum');
-        redirect('Asessmen/asessmenUmum');
+        redirect('Pemeriksaan/pemeriksaanUmum');
     }
 
     public function asessmenKiakb()

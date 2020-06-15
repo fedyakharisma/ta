@@ -10,7 +10,7 @@
     <!-- font -->
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/fontawesome-free/css/all.min.css">
     <!-- icon -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/')?>plugins/flag-icon-css/css/css.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/flag-icon-css/css/css.css">
     <!-- bootstrap icheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets/') ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- tema -->
@@ -31,11 +31,7 @@
                 <p class="login-box-msg"></p>
                 <form action="<?php echo site_url('Login/aksi_login/'); ?>" method="post">
                     <div class="input-group mb-3">
-<<<<<<< HEAD
-                        <input type="text" class="form-control" placeholder="Username" name="username">
-=======
                         <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" autofocus>
->>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
@@ -87,4 +83,5 @@
         });
     </script>
 </body>
+
 </html>

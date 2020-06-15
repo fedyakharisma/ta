@@ -46,8 +46,6 @@
 
 <script>
   $(function() {
-<<<<<<< HEAD
-=======
 
     <?php if ($this->session->flashdata('loginBerhasil')) { ?>
       toastr.success('Login berhasil, Selamat datang!');
@@ -62,7 +60,6 @@
       toastr.success('Data diubah');
     <?php } ?>
 
->>>>>>> 1e0a6ec831046be2c046241bd3c33d30561df3a9
     //Initialize Select2 Elements
     $('.select2').select2({
       theme: 'bootstrap4'
